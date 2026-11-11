@@ -2,14 +2,47 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-const root = '/invitations/bloom/assets';
+import openerVideo from './assets/video/opener.mp4';
+import backgroundMusic from './assets/audio/music.mp3';
+import clusterImage from './assets/images/cluster.webp';
+import dividerImage from './assets/images/divider.webp';
+import flowerImage from './assets/images/flower.webp';
+import garlandBandImage from './assets/images/garland-band.webp';
+import garlandLeftImage from './assets/images/garland-left.webp';
+import openerPoster from './assets/images/opener-poster.jpg';
+import sprigImage from './assets/images/sprig.webp';
+import petal0 from './assets/images/petal0.webp';
+import petal1 from './assets/images/petal1.webp';
+import petal2 from './assets/images/petal2.webp';
+import petal3 from './assets/images/petal3.webp';
+import petal4 from './assets/images/petal4.webp';
+import petal5 from './assets/images/petal5.webp';
+import petal6 from './assets/images/petal6.webp';
+
+const importedAssets = {
+  'video/opener.mp4': openerVideo,
+  'audio/music.mp3': backgroundMusic,
+  'images/cluster.webp': clusterImage,
+  'images/divider.webp': dividerImage,
+  'images/flower.webp': flowerImage,
+  'images/garland-band.webp': garlandBandImage,
+  'images/garland-left.webp': garlandLeftImage,
+  'images/opener-poster.jpg': openerPoster,
+  'images/sprig.webp': sprigImage,
+  'images/petal0.webp': petal0, 'images/petal1.webp': petal1, 'images/petal2.webp': petal2,
+  'images/petal3.webp': petal3, 'images/petal4.webp': petal4, 'images/petal5.webp': petal5, 'images/petal6.webp': petal6,
+};
+const asset = (name) => {
+  const imported = importedAssets[name];
+  if (!imported) throw new Error(`Bloom asset is not registered: ${name}`);
+  return typeof imported === 'string' ? imported : imported.src;
+};
 const events = [
-  { title: 'Mehndi', date: 'Thursday · 15 October 2026', start: '20261015T170000', end: '20261015T220000', time: '5:00 PM', venue: "Water’s Edge, Lahore", note: 'An evening of colour, dholki and mehndi.', url: 'https://share.google/N2DXIhDjIMAk74g7N' },
-  { title: 'Nikkah', date: 'Friday · 16 October 2026', start: '20261016T190000', end: '20261016T230000', time: '7:00 PM', venue: 'Dera Dari, Lahore', note: 'The Nikkah ceremony, followed by dinner.', url: 'https://maps.app.goo.gl/T4mQ72ddDWQ7UBqg9' },
-  { title: 'Barat', date: 'Saturday · 17 October 2026', start: '20261017T190000', end: '20261017T235900', time: '7:00 PM', venue: 'Aura Grande Enclave, Lahore', note: 'Arrival of the Barat and Rukhsati.', url: 'https://share.google/Sj22CUrwQmhdkXYto' },
-  { title: 'Walima', date: 'Sunday · 18 October 2026', start: '20261018T190000', end: '20261018T230000', time: '7:00 PM', venue: 'The Royals Event Complex, Lahore', note: "Dinner reception hosted by the groom's family.", url: 'https://share.google/2BCM2QJ9oeyllqJIT' },
+  { title: 'Mehndi', date: 'Tuesday · 15 December 2026', start: '20261215T170000', end: '20261215T220000', time: '5:00 PM', venue: "Water’s Edge, Lahore", note: 'An evening of colour, dholki and mehndi.', url: 'https://share.google/N2DXIhDjIMAk74g7N' },
+  { title: 'Nikkah', date: 'Wednesday · 16 December 2026', start: '20261216T190000', end: '20261216T230000', time: '7:00 PM', venue: 'Dera Dari, Lahore', note: 'The Nikkah ceremony, followed by dinner.', url: 'https://maps.app.goo.gl/T4mQ72ddDWQ7UBqg9' },
+  { title: 'Barat', date: 'Thursday · 17 December 2026', start: '20261217T190000', end: '20261217T235900', time: '7:00 PM', venue: 'Aura Grande Enclave, Lahore', note: 'Arrival of the Barat and Rukhsati.', url: 'https://share.google/Sj22CUrwQmhdkXYto' },
+  { title: 'Walima', date: 'Friday · 18 December 2026', start: '20261218T190000', end: '20261218T230000', time: '7:00 PM', venue: 'The Royals Event Complex, Lahore', note: "Dinner reception hosted by the groom's family.", url: 'https://share.google/2BCM2QJ9oeyllqJIT' },
 ];
-const asset = (name) => `${root}/${name}`;
 
 function Ornament({ src = 'sprig.webp', className = '', alt = '' }) {
   return <div className={`flora ${className}`} data-r aria-hidden="true"><span className="rs"><img src={asset(`images/${src}`)} alt={alt} /></span></div>;
@@ -68,6 +101,7 @@ function PetalCanvas({ enabled, burstKey }) {
 function ScratchCard({ onReveal }) {
   const canvasRef = useRef(null);
   const drawing = useRef(false);
+  const scratchMoveCount = useRef(0);
   const [revealed, setRevealed] = useState(false);
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -81,8 +115,18 @@ function ScratchCard({ onReveal }) {
     gradient.addColorStop(0, '#d8c7a6'); gradient.addColorStop(.5, '#eee2c9'); gradient.addColorStop(1, '#c8b18b');
     ctx.fillStyle = gradient; ctx.fillRect(0, 0, bounds.width, bounds.height);
     ctx.fillStyle = 'rgba(255,255,255,.38)'; ctx.font = '600 12px Cormorant Garamond'; ctx.textAlign = 'center'; ctx.fillText('✧  SCRATCH TO REVEAL  ✧', bounds.width / 2, bounds.height / 2);
+    // Opaque paint clears the coating fully so the scratch threshold can be reached.
+    ctx.fillStyle = '#000';
     ctx.globalCompositeOperation = 'destination-out';
   }, []);
+  const revealIfCleared = () => {
+    const canvas = canvasRef.current;
+    if (!canvas || revealed) return;
+    const pixels = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+    let clear = 0;
+    for (let i = 3; i < pixels.length; i += 4) if (pixels[i] < 16) clear++;
+    if (clear / (pixels.length / 4) > .18) { setRevealed(true); onReveal(); }
+  };
   const point = (event) => {
     const rect = canvasRef.current.getBoundingClientRect();
     return [event.clientX - rect.left, event.clientY - rect.top];
@@ -90,22 +134,22 @@ function ScratchCard({ onReveal }) {
   const scratch = (event) => {
     if (!drawing.current || revealed) return;
     const ctx = canvasRef.current.getContext('2d'); const [x, y] = point(event);
-    ctx.beginPath(); ctx.arc(x, y, 20, 0, Math.PI * 2); ctx.fill();
-    const pixels = ctx.getImageData(0, 0, canvasRef.current.width, canvasRef.current.height).data;
-    let clear = 0; for (let i = 3; i < pixels.length; i += 4) if (pixels[i] === 0) clear++;
-    if (clear / (pixels.length / 4) > .42) { setRevealed(true); onReveal(); }
+    ctx.beginPath(); ctx.arc(x, y, 32, 0, Math.PI * 2); ctx.fill();
+    scratchMoveCount.current += 1;
+    if (scratchMoveCount.current % 3 === 0) revealIfCleared();
   };
-  return <div className={`scratch ${revealed ? 'revealed' : ''}`} onPointerDown={(e) => { drawing.current = true; e.currentTarget.setPointerCapture(e.pointerId); scratch(e); }} onPointerMove={scratch} onPointerUp={() => { drawing.current = false; }}>
-    <span className="k">THE NIKKAH OF HAMZA &amp; AYESHA</span><strong className="d">16 October 2026</strong><span className="dd">Friday</span><span className="t">7:00 PM · DERA DARI</span>
-    {!revealed && <canvas ref={canvasRef} aria-label="Scratch to reveal the wedding date" />}
+  return <div className={`scratch ${revealed ? 'revealed' : ''}`}>
+    <span className="k">THE NIKKAH OF ALI &amp; FATIMA</span><strong className="d">16 December 2026</strong><span className="dd">Wednesday</span><span className="t">7:00 PM · DERA DARI</span>
+    {!revealed && <canvas ref={canvasRef} aria-label="Scratch to reveal the wedding date" onPointerDown={(e) => { drawing.current = true; e.currentTarget.setPointerCapture(e.pointerId); scratch(e); }} onPointerMove={scratch} onPointerUp={() => { drawing.current = false; revealIfCleared(); }} onPointerCancel={() => { drawing.current = false; revealIfCleared(); }} />}
+    {!revealed && <button type="button" className="scratch-reveal" onClick={() => { setRevealed(true); onReveal(); }}>Tap to reveal date</button>}
   </div>;
 }
 
 function CalendarButton({ event }) {
   const add = () => {
-    const content = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//WedsPK//Bloom Invitation//EN', 'BEGIN:VEVENT', `UID:${event.start.toLowerCase()}-hamza-ayesha@wedpk`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}`, `DTSTART;TZID=Asia/Karachi:${event.start}`, `DTEND;TZID=Asia/Karachi:${event.end}`, `SUMMARY:${event.title} — Hamza & Ayesha`, `LOCATION:${event.venue}`, `DESCRIPTION:${event.note}`, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    const content = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//WedsPK//Bloom Invitation//EN', 'BEGIN:VEVENT', `UID:${event.start.toLowerCase()}-ali-fatima@wedpk`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}`, `DTSTART;TZID=Asia/Karachi:${event.start}`, `DTEND;TZID=Asia/Karachi:${event.end}`, `SUMMARY:${event.title} — Ali & Fatima`, `LOCATION:${event.venue}`, `DESCRIPTION:${event.note}`, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
     const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' }); const url = URL.createObjectURL(blob);
-    const a = document.createElement('a'); a.href = url; a.download = `${event.title.toLowerCase()}-hamza-ayesha.ics`; a.click(); URL.revokeObjectURL(url);
+    const a = document.createElement('a'); a.href = url; a.download = `${event.title.toLowerCase()}-ali-fatima.ics`; a.click(); URL.revokeObjectURL(url);
   };
   return <button type="button" className="btn" onClick={add}><CalendarIcon /> Add to calendar</button>;
 }
@@ -162,7 +206,7 @@ export default function BloomInvitation() {
     const observer = new IntersectionObserver((items) => items.forEach((item) => { if (item.isIntersecting) { item.target.classList.add('in'); observer.unobserve(item.target); } }), { threshold: .15 });
     document.querySelectorAll('[data-r]').forEach((node) => observer.observe(node));
     const tick = () => {
-      const diff = Math.max(0, new Date('2026-10-16T19:00:00+05:00').getTime() - Date.now());
+      const diff = Math.max(0, new Date('2026-12-16T19:00:00+05:00').getTime() - Date.now());
       setCountdown([Math.floor(diff / 86400000), Math.floor(diff / 3600000) % 24, Math.floor(diff / 60000) % 60, Math.floor(diff / 1000) % 60]);
     };
     tick(); const timer = window.setInterval(tick, 1000);
@@ -201,7 +245,7 @@ export default function BloomInvitation() {
     {coverVisible && <div id="cover" className={`cover ${coverOpening ? 'opening' : ''} ${opened ? 'gone' : ''}`} role="button" tabIndex={0} aria-label="Open the invitation" onClick={beginOpen} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') beginOpen(); }}>
       <div className="cover-stage"><video ref={videoRef} id="openVideo" className="cover-video" src={asset('video/opener.mp4')} poster={asset('images/opener-poster.jpg')} muted playsInline preload="auto" /></div>
       <span className="bud-halo" aria-hidden="true"><i /><i /></span>
-      <div className="cover-title"><p>THE WEDDING OF</p><h2>Hamza &amp; Ayesha</h2></div>
+      <div className="cover-title"><p>THE WEDDING OF</p><h2>Ali &amp; Fatima</h2></div>
       <p className="cover-hint"><span>TAP THE BUD TO OPEN</span></p>
       <button type="button" className="skip" onClick={(e) => { e.stopPropagation(); openInvitation(); }}>SKIP ›</button>
     </div>}
@@ -212,8 +256,8 @@ export default function BloomInvitation() {
         <div className="hang hang-r" onClick={petalBurst}><span className="rs"><img src={asset('images/cluster.webp')} alt="" /></span></div>
         <div className="hero-text">
           <p className="eyebrow">TOGETHER WITH THEIR FAMILIES</p><p className="lead">joyfully invite you to celebrate the wedding of</p>
-          <h1 className="names"><span className="n1">Hamza</span><span className="amp">&amp;</span><span className="n2">Ayesha</span></h1>
-          <Divider /><p className="hero-date">15 – 18 October 2026</p><p className="hero-place">LAHORE · PAKISTAN</p>
+          <h1 className="names"><span className="n1">Ali</span><span className="amp">&amp;</span><span className="n2">Fatima</span></h1>
+          <Divider /><p className="hero-date">15 – 18 December 2026</p><p className="hero-place">LAHORE · PAKISTAN</p>
         </div>
         <div className="garland gl" onClick={petalBurst}><span className="rs"><img src={asset('images/garland-left.webp')} alt="" /></span></div>
         <div className="garland gr" onClick={petalBurst}><span className="rs"><img src={asset('images/garland-left.webp')} alt="" /></span></div>
@@ -224,7 +268,7 @@ export default function BloomInvitation() {
         <Reveal className="band"><img src={asset('images/garland-band.webp')} alt="" /></Reveal>
         <Reveal className="inv-in">
           <p className="script">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p><p className="label">Mr. &amp; Mrs. Tariq Khan</p>
-          <p className="body">request the pleasure of your company<br />at the wedding of their son</p><p className="nm">Hamza Khan</p><p className="body">&amp;</p><p className="nm">Ayesha Khan</p>
+          <p className="body">request the pleasure of your company<br />at the wedding of their son</p><p className="nm">Ali Khan</p><p className="body">&amp;</p><p className="nm">Fatima Khan</p>
           <p className="body">daughter of<br />Mr. &amp; Mrs. Ahmed Khan</p><p className="body">Your presence and prayers would make<br />our celebration complete.</p>
         </Reveal>
         <Reveal className="swag"><img src={asset('images/garland-band.webp')} alt="" /></Reveal>
@@ -252,7 +296,7 @@ export default function BloomInvitation() {
       </section>
 
       <section className="sec frame" id="rsvp">
-        <Reveal><p className="eyebrow">KINDLY RESPOND BY 1 OCTOBER 2026</p><h2 className="h2">Will you join us?</h2><Divider /></Reveal>
+        <Reveal><p className="eyebrow">KINDLY RESPOND BY 1 DECEMBER 2026</p><h2 className="h2">Will you join us?</h2><Divider /></Reveal>
         {rsvpSent ? <div className="thanks">{rsvpLocalOnly ? 'Thank you. Your response has been saved on this device.' : 'Thank you. Your RSVP has been received.'}</div> : <form className="form" onSubmit={submitRsvp}>
           <Reveal className="fld"><label htmlFor="rName">Full name</label><input id="rName" name="name" type="text" autoComplete="name" required /></Reveal>
           <Reveal className="fld"><span className="lbl">Will you be attending?</span><div className="choice"><label><input type="radio" name="attendance" value="yes" required /> Joyfully accepts</label><label><input type="radio" name="attendance" value="no" /> Regretfully declines</label></div></Reveal>
@@ -264,7 +308,7 @@ export default function BloomInvitation() {
 
       <section className="sec closing">
         <Reveal className="swag2"><img src={asset('images/garland-band.webp')} alt="" /></Reveal>
-        <Reveal><p className="dua">بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p><p className="line">We look forward to celebrating with you</p><p className="cn">Hamza &amp; Ayesha</p></Reveal>
+        <Reveal><p className="dua">بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p><p className="line">We look forward to celebrating with you</p><p className="cn">Ali &amp; Fatima</p></Reveal>
         <Reveal className="mini"><img src={asset('images/divider.webp')} alt="" /></Reveal>
       </section>
     </main>
