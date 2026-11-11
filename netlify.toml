@@ -7,3 +7,8 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Explicitly load the Netlify Next.js runtime so routes (including the "/"
+# redirect) are served by Next.js instead of as raw files from .next.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
