@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import openerVideo from './assets/video/opener.mp4';
 import backgroundMusic from './assets/audio/music.mp3';
 import clusterImage from './assets/images/cluster.webp';
 import dividerImage from './assets/images/divider.webp';
@@ -20,7 +19,6 @@ import petal5 from './assets/images/petal5.webp';
 import petal6 from './assets/images/petal6.webp';
 
 const importedAssets = {
-  'video/opener.mp4': openerVideo,
   'audio/music.mp3': backgroundMusic,
   'images/cluster.webp': clusterImage,
   'images/divider.webp': dividerImage,
@@ -32,6 +30,9 @@ const importedAssets = {
   'images/petal0.webp': petal0, 'images/petal1.webp': petal1, 'images/petal2.webp': petal2,
   'images/petal3.webp': petal3, 'images/petal4.webp': petal4, 'images/petal5.webp': petal5, 'images/petal6.webp': petal6,
 };
+// The opener video is too large for Git (*.mp4 is gitignored). Host it externally and set
+// NEXT_PUBLIC_BLOOM_OPENER_VIDEO_URL to enable it; otherwise the cover shows the poster only.
+const openerVideoUrl = process.env.NEXT_PUBLIC_BLOOM_OPENER_VIDEO_URL || '';
 const asset = (name) => {
   const imported = importedAssets[name];
   if (!imported) throw new Error(`Bloom asset is not registered: ${name}`);
@@ -243,7 +244,9 @@ export default function BloomInvitation() {
   return <>
     <PetalCanvas enabled={opened} burstKey={burstKey} />
     {coverVisible && <div id="cover" className={`cover ${coverOpening ? 'opening' : ''} ${opened ? 'gone' : ''}`} role="button" tabIndex={0} aria-label="Open the invitation" onClick={beginOpen} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') beginOpen(); }}>
-      <div className="cover-stage"><video ref={videoRef} id="openVideo" className="cover-video" src={asset('video/opener.mp4')} poster={asset('images/opener-poster.jpg')} muted playsInline preload="auto" /></div>
+      <div className="cover-stage">{openerVideoUrl
+        ? <video ref={videoRef} id="openVideo" className="cover-video" src={openerVideoUrl} poster={asset('images/opener-poster.jpg')} muted playsInline preload="auto" />
+        : <img id="openVideo" className="cover-video" src={asset('images/opener-poster.jpg')} alt="" aria-hidden="true" />}</div>
       <span className="bud-halo" aria-hidden="true"><i /><i /></span>
       <div className="cover-title"><p>THE WEDDING OF</p><h2>Ali &amp; Fatima</h2></div>
       <p className="cover-hint"><span>TAP THE BUD TO OPEN</span></p>
