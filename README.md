@@ -1,6 +1,6 @@
 # Bloom Next.js Invitation
 
-Standalone Next.js version of the Bloom wedding invitation.
+Bloom is implemented as a Next.js App Router page with React components and hooks. Its stylesheet is imported by the Bloom route layout; visual media remains in `public/invitations/bloom/assets`.
 
 ## Run locally
 

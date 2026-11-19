@@ -1,10 +1,10 @@
-@font-face { font-family: "Alex Brush"; src: url(/invitations/bloom/assets/fonts/alex-brush.woff2) format("woff2"); font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url(/invitations/bloom/assets/fonts/cormorant-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url(/invitations/bloom/assets/fonts/cormorant-500-normal.woff2) format("woff2"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url(/invitations/bloom/assets/fonts/cormorant-600-normal.woff2) format("woff2"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url(/invitations/bloom/assets/fonts/cormorant-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "Cormorant Garamond"; src: url(/invitations/bloom/assets/fonts/cormorant-500-italic.woff2) format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
-@font-face { font-family: "Amiri"; src: url(/invitations/bloom/assets/fonts/amiri.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Alex Brush"; src: url(./assets/fonts/alex-brush.woff2) format("woff2"); font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(./assets/fonts/cormorant-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(./assets/fonts/cormorant-500-normal.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(./assets/fonts/cormorant-600-normal.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(./assets/fonts/cormorant-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Cormorant Garamond"; src: url(./assets/fonts/cormorant-500-italic.woff2) format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Amiri"; src: url(./assets/fonts/amiri.woff2) format("woff2"); font-weight: 400; font-display: swap; }
 :root {
 --paper: #f2ebdb;
 --cream: #eae0c9;
@@ -29,14 +29,14 @@
 html { -webkit-text-size-adjust: 100%; }
 html.locked, html.locked body { overflow: hidden; height: 100%; }
 body { margin: 0; color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; font-variant-numeric: lining-nums;
-background: linear-gradient(rgba(226, 214, 190, .6), rgba(226, 214, 190, .6)), #e2d6be url(/invitations/bloom/assets/images/paper.jpg) center / 1100px; }
+background: linear-gradient(rgba(226, 214, 190, .6), rgba(226, 214, 190, .6)), #e2d6be url(./assets/images/paper.jpg) center / 1100px; }
 img { display: block; max-width: 100%; }
 button { font: inherit; color: inherit; }
 @media (max-width: 480px) {
-html, body { background: linear-gradient(rgba(247, 242, 228, .74), rgba(247, 242, 228, .74)), var(--paper) url(/invitations/bloom/assets/images/paper.jpg) center top / 1100px; }
+html, body { background: linear-gradient(rgba(247, 242, 228, .74), rgba(247, 242, 228, .74)), var(--paper) url(./assets/images/paper.jpg) center top / 1100px; }
 }
 .page { position: relative; width: var(--col); margin: 0 auto; overflow: hidden;
-background: linear-gradient(rgba(247, 242, 228, .74), rgba(247, 242, 228, .74)), var(--paper) url(/invitations/bloom/assets/images/paper.jpg) center top / 1100px;
+background: linear-gradient(rgba(247, 242, 228, .74), rgba(247, 242, 228, .74)), var(--paper) url(./assets/images/paper.jpg) center top / 1100px;
 box-shadow: 0 0 60px -20px rgba(70, 55, 30, .35); }
 .cover { position: fixed; inset: 0; z-index: 100; background: #f1e9d6; overflow: hidden; cursor: pointer;
 transition: opacity 1.3s ease; -webkit-tap-highlight-color: transparent; }
@@ -44,7 +44,7 @@ transition: opacity 1.3s ease; -webkit-tap-highlight-color: transparent; }
 .cover-stage { position: absolute; left: 50%; top: 50%; width: max(100vw, 56.25vh); height: max(177.78vw, 100vh); transform: translate(-50%, -50%); }
 .cover-video { width: 100%; height: 100%; object-fit: cover; }
 @media (min-aspect-ratio: 3/4) {
-.cover { background: linear-gradient(rgba(226, 214, 190, .6), rgba(226, 214, 190, .6)), #e2d6be url(/invitations/bloom/assets/images/paper.jpg) center / 1100px; }
+.cover { background: linear-gradient(rgba(226, 214, 190, .6), rgba(226, 214, 190, .6)), #e2d6be url(./assets/images/paper.jpg) center / 1100px; }
 .cover-stage { width: 56.25vh; height: 100vh; box-shadow: 0 0 70px -18px rgba(70, 55, 30, .45); }
 }
 .bud-halo { display: none; }
@@ -280,7 +280,7 @@ background: rgba(252, 248, 240, .5); font: 500 1.05rem/1.2 var(--serif); color: 
 .form .btn.solid { width: 100%; margin-top: .4rem; }
 .thanks { position: relative; z-index: 2; padding: 1.5rem 0; font: italic 400 1.35rem/1.5 var(--serif); color: var(--green); text-align: center; animation: up 1s var(--ease) both; }
 .closing { padding: 3.4rem 1.5rem 3rem;
-background: linear-gradient(rgba(234, 224, 201, .82), rgba(234, 224, 201, .82)), var(--cream) url(/invitations/bloom/assets/images/paper.jpg) center / 1100px; }
+background: linear-gradient(rgba(234, 224, 201, .82), rgba(234, 224, 201, .82)), var(--cream) url(./assets/images/paper.jpg) center / 1100px; }
 .swag2 { width: calc(100% + 1rem); margin: 0 -.5rem 1.6rem; }
 .swag2 img { transform-origin: 50% 0; animation-name: sway-band; }
 .closing .dua { margin: 0; font: 400 min(1.45rem, calc((var(--col) - 3.2rem) / 16.5))/2 "Amiri", serif; color: var(--green); white-space: nowrap; }
@@ -314,3 +314,8 @@ display: flex; align-items: center; justify-content: center; cursor: pointer; bo
 .scratch canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; }
 .scratch.revealed canvas { display: none; }
 .qq-note { position: fixed; z-index: 49; right: 4.4rem; bottom: max(1rem, calc(env(safe-area-inset-bottom) + .7rem)); max-width: 18rem; padding: .35rem .75rem; border-radius: 99px; background: rgba(252,248,240,.94); color: var(--green); font: italic 400 .85rem/1.25 var(--serif); box-shadow: 0 3px 12px rgba(70,55,30,.12); }
+
+.scratch canvas { cursor: grab; touch-action: none; }
+.scratch canvas:active { cursor: grabbing; }
+.scratch-reveal { position: absolute; z-index: 3; bottom: .45rem; right: .55rem; border: 0; border-radius: 99px; padding: .35rem .65rem; background: rgba(252,248,240,.9); color: var(--rose-deep); font: 600 .55rem/1 var(--serif); letter-spacing: .08em; cursor: pointer; }
+.scratch.revealed .scratch-reveal { display: none; }
