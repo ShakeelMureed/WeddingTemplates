@@ -43,6 +43,10 @@ const events = [
   { title: 'Barat', date: 'Thursday · 17 December 2026', start: '20261217T190000', end: '20261217T235900', time: '7:00 PM', venue: 'Aura Grande Enclave, Lahore', note: 'Arrival of the Barat and Rukhsati.', url: 'https://share.google/Sj22CUrwQmhdkXYto' },
   { title: 'Walima', date: 'Friday · 18 December 2026', start: '20261218T190000', end: '20261218T230000', time: '7:00 PM', venue: 'The Royals Event Complex, Lahore', note: "Dinner reception hosted by the groom's family.", url: 'https://share.google/2BCM2QJ9oeyllqJIT' },
 ];
+const families = [
+  { side: "Groom's family", name: 'Ali Khan', parents: 'Mr. & Mrs. Tariq Khan' },
+  { side: "Bride's family", name: 'Fatima Khan', parents: 'Mr. & Mrs. Ahmed Khan' },
+];
 
 function Ornament({ src = 'sprig.webp', className = '', alt = '' }) {
   return <div className={`flora ${className}`} data-r aria-hidden="true"><span className="rs"><img src={asset(`images/${src}`)} alt={alt} /></span></div>;
@@ -175,6 +179,8 @@ export default function BloomInvitation() {
   const [rsvpSent, setRsvpSent] = useState(false);
   const [rsvpLocalOnly, setRsvpLocalOnly] = useState(false);
   const [rsvpError, setRsvpError] = useState('');
+  const [guestName, setGuestName] = useState('Family & Friends');
+  const [attendanceChoice, setAttendanceChoice] = useState('');
   const musicRef = useRef(null);
   const videoRef = useRef(null);
   const finishRef = useRef(null);
@@ -202,6 +208,11 @@ export default function BloomInvitation() {
   }, [coverOpening, opened, openInvitation]);
 
   useEffect(() => {
+    const guest = new URLSearchParams(window.location.search).get('guest')?.trim();
+    if (guest) setGuestName(guest.slice(0, 80));
+  }, []);
+
+  useEffect(() => {
     document.documentElement.classList.add('locked');
     const observer = new IntersectionObserver((items) => items.forEach((item) => { if (item.isIntersecting) { item.target.classList.add('in'); observer.unobserve(item.target); } }), { threshold: .15 });
     document.querySelectorAll('[data-r]').forEach((node) => observer.observe(node));
@@ -211,7 +222,7 @@ export default function BloomInvitation() {
     };
     tick(); const timer = window.setInterval(tick, 1000);
     const quranObserver = new IntersectionObserver((items) => {
-      if (items.some((item) => item.isIntersecting)) { musicRef.current?.pause(); setMusicNotice('Music paused in reverence of the Quranic verse'); }
+      if (items.some((item) => item.isIntersecting)) { musicRef.current?.pause(); setMusicNotice('Music paused in respect of the Quranic verse'); }
       else setMusicNotice('');
     }, { threshold: .55 });
     document.querySelectorAll('.inv .script, .closing .dua').forEach((node) => quranObserver.observe(node));
@@ -226,6 +237,7 @@ export default function BloomInvitation() {
     event.preventDefault(); const form = new FormData(event.currentTarget);
     if (!form.get('name') || !form.get('attendance')) { setRsvpError('Please enter your name and choose an attendance option.'); return; }
     const response = Object.fromEntries(form.entries());
+    response.events = form.getAll('events');
     const endpoint = process.env.NEXT_PUBLIC_RSVP_ENDPOINT;
     try {
       if (endpoint) {
@@ -243,9 +255,9 @@ export default function BloomInvitation() {
   return <>
     <PetalCanvas enabled={opened} burstKey={burstKey} />
     {coverVisible && <div id="cover" className={`cover ${coverOpening ? 'opening' : ''} ${opened ? 'gone' : ''}`} role="button" tabIndex={0} aria-label="Open the invitation" onClick={beginOpen} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') beginOpen(); }}>
-      <div className="cover-stage"><video ref={videoRef} id="openVideo" className="cover-video" src={asset('video/opener.mp4')} poster={asset('images/opener-poster.jpg')} muted playsInline preload="auto" /></div>
+      <div className="cover-stage"><video suppressHydrationWarning ref={videoRef} id="openVideo" className="cover-video" src={asset('video/opener.mp4')} poster={asset('images/opener-poster.jpg')} muted playsInline preload="auto" /></div>
       <span className="bud-halo" aria-hidden="true"><i /><i /></span>
-      <div className="cover-title"><p>THE WEDDING OF</p><h2>Ali &amp; Fatima</h2></div>
+      <div className="cover-title"><p>A WEDDING INVITATION FOR</p><h2>{guestName}</h2><span className="cover-couple">Ali &amp; Fatima invite you</span></div>
       <p className="cover-hint"><span>TAP THE BUD TO OPEN</span></p>
       <button type="button" className="skip" onClick={(e) => { e.stopPropagation(); openInvitation(); }}>SKIP ›</button>
     </div>}
@@ -272,7 +284,18 @@ export default function BloomInvitation() {
           <p className="body">daughter of<br />Mr. &amp; Mrs. Ahmed Khan</p><p className="body">Your presence and prayers would make<br />our celebration complete.</p>
         </Reveal>
         <Reveal className="swag"><img src={asset('images/garland-band.webp')} alt="" /></Reveal>
-        <Ornament className="corner tl" src="flower.webp" /><Ornament className="corner br" src="flower.webp" />
+        {/*<Ornament className="corner tl" src="flower.webp" /><Ornament className="corner br" src="flower.webp" />*/}
+      </section>
+
+      <section className="sec family-sec" id="families" aria-labelledby="families-title">
+        <Reveal><p className="eyebrow">WITH THE BLESSINGS OF</p><h2 className="h2" id="families-title">Our Families</h2><Divider /><p className="family-intro">Two families, one joyful celebration</p></Reveal>
+        <div className="family-grid">
+          {families.map((family, index) => <Reveal className="family-card" delay={index * .12} key={family.side}>
+            <Ornament className="family-flower" src="flower.webp" />
+            <p className="family-side">{family.side}</p><h3>{family.name}</h3><Divider /><p className="family-parents">{family.parents}</p>
+          </Reveal>)}
+        </div>
+        <Ornament className="family-corner family-left" src="sprig.webp" /><Ornament className="family-corner family-right" src="sprig.webp" />
       </section>
 
       <section className="sec frame" id="save-date">
@@ -283,13 +306,13 @@ export default function BloomInvitation() {
       </section>
 
       <section className="sec frame" id="countdown">
-        <Reveal><p className="eyebrow">UNTIL WE SAY QUBOOL HAI</p><h2 className="h2">Counting the days</h2><Divider /></Reveal>
+        <Reveal className="countdown-heading"><p className="eyebrow">UNTIL WE SAY QUBOOL HAI</p><h2 className="h2">Counting the days</h2><Divider /></Reveal>
         <Reveal className="cd">{countdown.map((value, i) => <div key={i}><b>{String(value).padStart(2, '0')}</b><span>{['Days', 'Hours', 'Minutes', 'Seconds'][i]}</span></div>)}</Reveal>
-        <Ornament className="corner tr" src="flower.webp" /><Ornament className="corner tl" src="flower.webp" />
+        <Ornament className="countdown-flower countdown-left" src="flower.webp" /><Ornament className="countdown-flower countdown-right" src="flower.webp" />
       </section>
 
       <section className="sec evsec" id="celebrations">
-        <Reveal className="evband"><img src={asset('images/garland-band.webp')} alt="" /></Reveal>
+        <Reveal className="evband"></Reveal>
         <div className="arch-wrap"><Reveal className="awning" /><Reveal className="arch"><p className="eyebrow">JOIN US FOR</p><h2 className="h2">The Celebrations</h2><Divider /></Reveal><Ornament className="crown" src="flower.webp" /></div>
         {events.map((event, index) => <CelebrationCard key={event.title} event={event} index={index} onPetal={petalBurst} />)}
         <Ornament className="evsprig el" src="sprig.webp" />
@@ -298,9 +321,13 @@ export default function BloomInvitation() {
       <section className="sec frame" id="rsvp">
         <Reveal><p className="eyebrow">KINDLY RESPOND BY 1 DECEMBER 2026</p><h2 className="h2">Will you join us?</h2><Divider /></Reveal>
         {rsvpSent ? <div className="thanks">{rsvpLocalOnly ? 'Thank you. Your response has been saved on this device.' : 'Thank you. Your RSVP has been received.'}</div> : <form className="form" onSubmit={submitRsvp}>
-          <Reveal className="fld"><label htmlFor="rName">Full name</label><input id="rName" name="name" type="text" autoComplete="name" required /></Reveal>
-          <Reveal className="fld"><span className="lbl">Will you be attending?</span><div className="choice"><label><input type="radio" name="attendance" value="yes" required /> Joyfully accepts</label><label><input type="radio" name="attendance" value="no" /> Regretfully declines</label></div></Reveal>
-          <Reveal className="fld"><label htmlFor="rNote">Message (optional)</label><textarea id="rNote" name="note" /></Reveal>
+          <p className="form-intro">Please reply for each guest in your invitation.</p>
+          <Reveal className="fld"><label htmlFor="rName">Your full name</label><input id="rName" name="name" type="text" autoComplete="name" placeholder="Name on your invitation" required /></Reveal>
+          <Reveal className="fld"><label htmlFor="rContact">Email or phone <span className="optional">(optional)</span></label><input id="rContact" name="contact" type="text" autoComplete="email" placeholder="How we can reach you" /></Reveal>
+          <Reveal className="fld"><span className="lbl">Can you join us?</span><div className="choice"><label><input type="radio" name="attendance" value="yes" required onChange={() => setAttendanceChoice('yes')} /> Happily, we’ll be there</label><label><input type="radio" name="attendance" value="no" onChange={() => setAttendanceChoice('no')} /> Sorry, we can’t make it</label></div></Reveal>
+          {attendanceChoice === 'yes' && <Reveal className="fld"><label htmlFor="rGuests">Number attending <span className="optional">(including you)</span></label><select id="rGuests" name="guestCount" defaultValue="1" required><option value="1">1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select></Reveal>}
+          {attendanceChoice === 'yes' && <Reveal className="fld"><span className="lbl">Which celebrations will you attend?</span><div className="choice event-choice">{events.map((item) => <label key={item.title}><input type="checkbox" name="events" value={item.title} /> {item.title}</label>)}</div></Reveal>}
+          <Reveal className="fld"><label htmlFor="rNote">Dietary needs or a note <span className="optional">(optional)</span></label><textarea id="rNote" name="note" placeholder="Let us know how we can make your visit comfortable" /></Reveal>
           {rsvpError && <p className="err" style={{ display: 'block' }}>{rsvpError}</p>}<button type="submit" className="btn solid">Send RSVP</button>
         </form>}
         <Ornament className="corner tr" src="flower.webp" /><Ornament className="corner bl lean" src="sprig.webp" />
@@ -309,7 +336,7 @@ export default function BloomInvitation() {
       <section className="sec closing">
         <Reveal className="swag2"><img src={asset('images/garland-band.webp')} alt="" /></Reveal>
         <Reveal><p className="dua">بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p><p className="line">We look forward to celebrating with you</p><p className="cn">Ali &amp; Fatima</p></Reveal>
-        <Reveal className="mini"><img src={asset('images/divider.webp')} alt="" /></Reveal>
+        {/*<Reveal className="mini"><img src={asset('images/divider.webp')} alt="" /></Reveal>*/}
       </section>
     </main>
 
