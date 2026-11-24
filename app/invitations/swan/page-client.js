@@ -103,7 +103,7 @@ export default function SwanInvitation() {
   return <div className="swan-root font-free-serif relative w-full overflow-x-hidden" style={{ backgroundColor: '#F7FAFD' }}>
     <main>
       <section className="relative h-[100svh] w-full overflow-hidden">
-        <video ref={heroRef} className="absolute inset-0 h-full w-full object-cover" poster={asset(heroImage)} muted loop playsInline preload="auto" aria-hidden="true"><source src={asset(heroVideo)} type="video/webm" /></video>
+        <video suppressHydrationWarning ref={heroRef} className="absolute inset-0 h-full w-full object-cover" poster={asset(heroImage)} muted loop playsInline preload="auto" aria-hidden="true"><source src={asset(heroVideo)} type="video/webm" /></video>
         <div className="relative z-20 flex h-full flex-col items-center px-6 pt-[10vh] text-center">
           <h1 className="font-citadel text-[2.9rem] leading-[1.1] sm:text-6xl lg:text-7xl hero-in hero-names" style={{ color: '#33517A' }}>Ali &amp; Fatima</h1>
           <p className="mt-2 text-lg uppercase tracking-[0.34em] hero-in hero-date" style={{ color: '#33517A' }}>16 · 10 · 2026</p>
@@ -168,7 +168,7 @@ export default function SwanInvitation() {
     <button type="button" onClick={toggleMusic} className="fixed right-5 top-5 z-[900] flex h-11 w-11 items-center justify-center rounded-full backdrop-blur transition-colors" style={{ backgroundColor: 'rgba(247,250,253,0.7)', border: '1px solid rgba(122, 152, 186, 0.38)', color: '#33517A' }} aria-label={musicOn ? 'Pause music' : 'Play music'}>{musicOn ? '♫' : '♪'}</button>
     <audio ref={musicRef} src={asset(swanLakeAudio)} loop preload="none" />
     <div className={`fixed inset-x-0 top-0 z-[1000] h-[100svh] overflow-hidden transition-opacity duration-[1400ms] ${opened ? 'pointer-events-none opacity-0' : 'opacity-100'}`} style={{ backgroundColor: '#F7FAFD', touchAction: 'none', overscrollBehavior: 'none' }} aria-hidden={opened}>
-      <video ref={coverRef} className="absolute inset-0 h-full w-full object-cover" poster={asset(posterImage)} muted playsInline loop preload="auto"><source src={asset(coverVideo)} type="video/webm" /></video>
+      <video suppressHydrationWarning ref={coverRef} className="absolute inset-0 h-full w-full object-cover" poster={asset(posterImage)} muted playsInline loop preload="auto"><source src={asset(coverVideo)} type="video/webm" /></video>
       <button type="button" onClick={openInvitation} aria-label="Open the invitation" className="absolute inset-0 flex w-full cursor-pointer flex-col items-center justify-between px-6 pb-[10vh] pt-[7vh]" style={{ transition: 'opacity .8s ease', color: '#33517A' }}>
         <div className="flex flex-col items-center gap-6"><span className="text-xs uppercase tracking-[0.48em]" style={{ color: 'rgba(51, 81, 122, 0.72)' }}>Wedding Invitation</span><span className="flex items-center gap-4 sm:gap-5"><span className="font-playfair text-4xl leading-none tracking-[0.12em] opacity-80 sm:text-6xl">A</span><span className="font-citadel text-4xl leading-none opacity-80 sm:text-6xl">&amp;</span><span className="font-playfair text-4xl leading-none tracking-[0.12em] opacity-80 sm:text-6xl">F</span></span></div>
         <span className="cover-hint whitespace-pre-line text-xs uppercase tracking-[0.34em] sm:text-sm" style={{ color: 'rgba(51, 81, 122, 0.72)' }}>Touch the feather{'\n'}to open</span>

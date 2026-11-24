@@ -79,7 +79,7 @@ export default function RubyInvitation() {
       <button className="music-toggle" type="button" onClick={toggleMusic} aria-label={musicOn ? 'Pause background music' : 'Play background music'}><span className={`music-bars ${musicOn ? 'is-playing' : ''}`} aria-hidden="true"><i /><i /><i /></span><span>{musicOn ? 'Playing' : 'Music'}</span></button>
 
       <section id="hero" className={`hero ${opened ? 'is-open' : 'is-closed'}`} role="button" tabIndex={0} aria-label="Tap to open the wedding invitation" onClick={!opened ? openInvitation : undefined} onKeyDown={(event) => { if (!opened && (event.key === 'Enter' || event.key === ' ')) openInvitation(); }}>
-        <video ref={heroVideoRef} className="hero-video" muted playsInline preload="auto" poster={img(galleryImage)}><source src={img(introVideo)} type="video/mp4" /></video>
+        <video suppressHydrationWarning ref={heroVideoRef} className="hero-video" muted playsInline preload="auto" poster={img(galleryImage)}><source src={img(introVideo)} type="video/mp4" /></video>
         <div className="hero-veil" />
         {!opened && <div id="openingMark" className="opening-mark"><span className="opening-label">Open Invitation</span><span className="opening-ripple" /></div>}
         <div className="hero-content">

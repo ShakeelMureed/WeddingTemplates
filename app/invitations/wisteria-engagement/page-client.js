@@ -61,7 +61,7 @@ export default function WisteriaEngagement() {
     <audio ref={audio} src={asset(`${A}/audio/music.mp3`)} loop preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} />
     {!open && <div id="gate"><div className="stage" style={{ background: `#302247 url(${asset(`${A}/img/veil.webp`)}) center/cover` }}>
       <img className="poster" src={asset(`${A}/img/veil.webp`)} alt="Moonlit wisteria courtyard" />
-      <video id="openVideo" src={asset(`${A}/video/opener.mp4`)} poster={asset(`${A}/img/veil.webp`)} muted playsInline preload="metadata" />
+      <video suppressHydrationWarning id="openVideo" src={asset(`${A}/video/opener.mp4`)} poster={asset(`${A}/img/veil.webp`)} muted playsInline preload="metadata" />
       <div className="gate-ui"><div><p className="gate-dear">{guest}</p><p className="gate-eyebrow">You are invited</p><h1 className="gate-names">Zara <span>&amp;</span> Hamza</h1></div><div><button className="hold" aria-label="Open the invitation" onClick={enter}><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" pathLength="1" strokeDasharray="1" strokeDashoffset="0" /></svg><span className="core" /></button><p className="hold-label">Hold for a moment</p><p className="hold-sub">and make a dua</p></div></div>
       <button type="button" className="skip on" onClick={enter}>Skip ›</button>
     </div></div>}

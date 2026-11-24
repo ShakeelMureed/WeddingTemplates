@@ -53,7 +53,7 @@ export default function BahaarInvitation() {
   const scratch = (e) => { if (!drawing.current || revealed) return; const c = canvas.current, ctx = c?.getContext('2d'); if (!c || !ctx) return; const b = c.getBoundingClientRect(), scale = c.width / b.width; ctx.globalCompositeOperation = 'destination-out'; ctx.beginPath(); ctx.arc((e.clientX - b.left) * scale, (e.clientY - b.top) * scale, 18 * scale, 0, Math.PI * 2); ctx.fill(); if (++scratchCount.current > 30) reveal(); };
   return <div className={`bahaar-root ${opened ? '' : 'scroll-locked'}`}>
     <section id="top" className="hero">
-      <video ref={video} className="hero__video" poster={media(introPoster)} muted playsInline loop preload="auto"><source src={media(introVideo)} type="video/mp4" /></video>
+      <video suppressHydrationWarning ref={video} className="hero__video" poster={media(introPoster)} muted playsInline loop preload="auto"><source src={media(introVideo)} type="video/mp4" /></video>
       {!opened && <img className="hero__poster-frame" src={media(introPoster)} alt="" aria-hidden="true" />}
       <button id="music-control" type="button" className={`music-control ${musicOn ? '' : 'is-muted'}`} onClick={toggleMusic} aria-label={musicOn ? 'Turn music off' : 'Turn music on'}><span className="music-control__icon">♫</span><span className="music-control__label">{musicOn ? 'Sound on' : 'Sound ready'}</span></button>
       {!opened && <button id="opening-gate" type="button" className="opening-gate" aria-label="Open wedding invitation" onClick={open} />}
