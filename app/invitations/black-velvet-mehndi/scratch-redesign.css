@@ -1,0 +1,64 @@
+#invitation.black-velvet .scratch-section {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 44rem;
+  align-items: center;
+  padding: clamp(5rem, 9vw, 8rem) max(6vw, 1.25rem);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 11% 35%, rgba(143, 35, 43, .28), transparent 38%),
+    linear-gradient(125deg, #10090b 0%, #211014 45%, #12090b 100%) !important;
+}
+#invitation.black-velvet .scratch-section::after {
+  position: absolute;
+  z-index: -1;
+  top: -18rem;
+  right: -16rem;
+  width: 38rem;
+  aspect-ratio: 1;
+  content: "";
+  border: 1px solid rgba(201,163,95,.18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5rem rgba(201,163,95,.035), 0 0 0 3rem rgba(201,163,95,.025);
+  pointer-events: none;
+}
+#invitation.black-velvet .scratch-layout {
+  display: grid;
+  grid-template-columns: minmax(0,.8fr) minmax(460px,1.2fr);
+  align-items: center;
+  gap: clamp(2rem,7vw,7rem);
+  width: min(100%, 90rem);
+  max-width: none;
+}
+#invitation.black-velvet .scratch-intro { max-width: 31rem; justify-self: end; text-align: left; }
+#invitation.black-velvet .scratch-intro .eyebrow { color: var(--champagne); font-family: var(--font-body); font-size: .67rem; letter-spacing: .28em; text-transform: uppercase; }
+#invitation.black-velvet .scratch-intro h2 { margin: 1rem 0 .7rem; color: var(--ivory); font-family: var(--font-display); font-size: clamp(3.4rem,7vw,6rem); font-weight: 400; line-height: .95; }
+#invitation.black-velvet .scratch-intro .ornament { margin: 1.3rem 0; }
+#invitation.black-velvet .scratch-intro > p { max-width: 26rem; color: rgba(241,227,206,.8); font-size: clamp(1.05rem,1.7vw,1.25rem); font-style: italic; line-height: 1.7; }
+#invitation.black-velvet .scratch-caption { display: block; max-width: 26rem; margin-top: 1.7rem; padding-top: 1rem; border-top: 1px solid rgba(201,163,95,.35); color: var(--champagne); font-family: var(--font-body); font-size: .61rem; letter-spacing: .2em; line-height: 1.8; }
+#invitation.black-velvet .scratch-card { position: relative; width: 100%; padding: clamp(1.3rem,3vw,2.5rem); border: 1px solid rgba(201,163,95,.52); background: linear-gradient(145deg,rgba(39,23,25,.96),rgba(16,9,11,.97)); box-shadow: 0 34px 80px rgba(0,0,0,.4), inset 0 0 0 5px rgba(201,163,95,.045); }
+#invitation.black-velvet .scratch-card::before { position: absolute; inset: .55rem; border: 1px solid rgba(201,163,95,.19); content: ""; pointer-events: none; }
+#invitation.black-velvet .scratch-topline { position: relative; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: .4rem; margin: 0 .3rem 1rem; color: #d9bd8e; font-family: var(--font-body); font-size: clamp(.48rem,.8vw,.62rem); letter-spacing: .2em; }
+#invitation.black-velvet .scratch-topline i { color: var(--champagne); font-size: 1rem; font-style: normal; }
+#invitation.black-velvet .scratch-frame-shell { width: 100%; max-width: 760px; margin: 0 auto; aspect-ratio: 1586 / 992; }
+#invitation.black-velvet .scratch-wrap { z-index: 2; }
+#invitation.black-velvet .scratch-canvas { z-index: 4; pointer-events: auto; }
+#invitation.black-velvet .scratch-note { position: relative; z-index: 4; margin: 1rem auto 0; color: rgba(241,227,206,.78); font-family: var(--font-display); font-size: .95rem; font-style: italic; text-align: center; }
+
+@media (max-width: 900px) {
+  #invitation.black-velvet .scratch-layout { grid-template-columns: minmax(0,1fr); gap: 2.2rem; }
+  #invitation.black-velvet .scratch-intro { justify-self: center; text-align: center; }
+  #invitation.black-velvet .scratch-intro > p,
+  #invitation.black-velvet .scratch-intro .ornament { margin-left: auto; margin-right: auto; }
+  #invitation.black-velvet .scratch-caption { margin-left: auto; margin-right: auto; }
+  #invitation.black-velvet .scratch-card { width: min(100%, 54rem); justify-self: center; }
+}
+@media (max-width: 560px) {
+  #invitation.black-velvet .scratch-section { padding: 4.5rem 1rem; }
+  #invitation.black-velvet .scratch-layout { gap: 1.5rem; }
+  #invitation.black-velvet .scratch-intro h2 { font-size: clamp(3rem,14vw,4.4rem); }
+  #invitation.black-velvet .scratch-card { padding: 1rem .65rem; }
+  #invitation.black-velvet .scratch-topline { font-size: .43rem; letter-spacing: .12em; }
+  #invitation.black-velvet .scratch-frame-shell { aspect-ratio: 1.2; }
+}

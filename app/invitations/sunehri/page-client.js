@@ -1,23 +1,115 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import './style.css';
 
-const image='https://images.unsplash.com/photo-1582181524507-4ec8300ffbfc?auto=format&fit=crop&w=2200&q=85';
-const events=[['Mayun','Wednesday · 24 March 2027','5:00 PM · The Courtyard'],['Nikkah','Thursday · 25 March 2027','6:00 PM · The Grand Hall'],['Reception','Friday · 26 March 2027','7:30 PM · The Grand Hall']];
+const image = 'https://images.unsplash.com/photo-1582181524507-4ec8300ffbfc?auto=format&fit=crop&w=2200&q=85';
+const events = [['Mayun', 'Wednesday · 24 March 2027', '5:00 PM · The Courtyard'], ['Nikkah', 'Thursday · 25 March 2027', '6:00 PM · The Grand Hall'], ['Reception', 'Friday · 26 March 2027', '7:30 PM · The Grand Hall']];
 
-export default function SunehriInvitation(){
- const[open,setOpen]=useState(false),[guest,setGuest]=useState('Dear family and friends'),[bride,setBride]=useState('Fatima'),[groom,setGroom]=useState('Ali'),[count,setCount]=useState([0,0,0,0]),[sent,setSent]=useState(false),[active,setActive]=useState(1);
- useEffect(()=>{const q=new URLSearchParams(location.search);setGuest(q.get('guest')?.trim()||'Dear family and friends');setBride(q.get('bride')?.trim()||'Fatima');setGroom(q.get('groom')?.trim()||'Ali');const tick=()=>{const ms=Math.max(0,new Date('2027-03-25T18:00:00+05:00').getTime()-Date.now());setCount([Math.floor(ms/86400000),Math.floor(ms/3600000)%24,Math.floor(ms/60000)%60,Math.floor(ms/1000)%60])};tick();const timer=setInterval(tick,1000);return()=>clearInterval(timer)},[]);
- const submit=e=>{e.preventDefault();const f=new FormData(e.currentTarget),r=Object.fromEntries(f);r.events=f.getAll('events');try{localStorage.setItem('sunehri-rsvp',JSON.stringify(r))}catch{}setSent(true)};
- return <main className="sunehri">
-  {!open&&<button className="sunehri-gate" type="button" onClick={()=>setOpen(true)} aria-label="Open the golden invitation"><span className="sunehri-gate-photo" style={{backgroundImage:`linear-gradient(180deg,rgba(27,17,15,.25),rgba(27,17,15,.87)),url(${image})`}}/><span className="sunehri-seal">✦</span><small>AN INVITATION, SEALED WITH LOVE</small><strong>{groom}<i>&amp;</i>{bride}</strong><em>{guest}</em><b>PRESS TO UNFOLD THE EVENING</b></button>}
-  <header className="sunehri-hero" style={{backgroundImage:`linear-gradient(90deg,rgba(22,14,13,.76),rgba(22,14,13,.18)),url(${image})`}}><div className="sunehri-hero-frame"><div className="sunehri-top"><span>THE WEDDING OF</span><a href="#sunehri-reply">YOUR REPLY ↗</a></div><div className="sunehri-title"><span className="sunehri-kicker">A CELEBRATION IN THREE ACTS</span><p>{guest}</p><h1>{groom}<i>&amp;</i>{bride}</h1><span className="sunehri-calligraphy">with their families</span><div className="sunehri-rule"><i>✧</i></div><span className="sunehri-date">25 · 03 · 2027 <b>—</b> LAHORE</span><a href="#sunehri-letter">UNFOLD THE DETAILS ↓</a></div><div className="sunehri-side-note">AN EVENING OF LIGHT<br/>LOVE · FAMILY · JOY</div></div></header>
-  <section className="sunehri-letter" id="sunehri-letter"><div className="sunehri-letter-panel"><span className="sunehri-kicker">BY THE GRACE OF ALLAH</span><span className="sunehri-arabic">بَارَكَ اللّٰهُ لَكُمَا</span><h2>With our families<br/>beside us, we begin.</h2><p>We warmly invite you to celebrate the marriage of {groom} and {bride}. Your prayers have always been a blessing; your presence will make our joy complete.</p><div className="sunehri-family"><span>{groom}’s family</span><i>✦</i><span>{bride}’s family</span></div></div></section>
-  <section className="sunehri-hall"><div className="sunehri-hall-image" style={{backgroundImage:`url(${image})`}}/><div className="sunehri-hall-copy"><span className="sunehri-kicker">THE SETTING</span><h2>Gather beneath<br/>the golden lights</h2><p>An evening of warmth, old stories and new beginnings. We’ll be waiting at the Grand Hall.</p><a href="https://maps.google.com/?q=Grand+Hall+Lahore" target="_blank" rel="noreferrer">DIRECTIONS TO THE HALL <b>↗</b></a><div className="sunehri-ornament">❦</div></div></section>
-  <section className="sunehri-count"><span className="sunehri-kicker">UNTIL THE NIKKAH</span><h2>Every moment brings us closer</h2><div className="sunehri-clock">{count.map((v,i)=><article key={i}><b>{String(v).padStart(i?2:1,'0')}</b><small>{['DAYS','HOURS','MINUTES','SECONDS'][i]}</small></article>)}</div><span className="sunehri-count-date">THURSDAY · 25 MARCH 2027 · 6:00 PM</span></section>
-  <section className="sunehri-events"><div className="sunehri-events-title"><span className="sunehri-kicker">A THREE-DAY GATHERING</span><h2>Choose your<br/>celebration</h2><p>Each evening has its own little magic.</p></div><div className="sunehri-tabs">{events.map((e,i)=><button type="button" key={e[0]} className={active===i?'active':''} onClick={()=>setActive(i)}><small>0{i+1}</small><span>{e[0]}</span></button>)}</div><article className="sunehri-event-detail"><span className="sunehri-event-star">✦</span><div><span className="sunehri-kicker">{events[active][1]}</span><h3>{events[active][0]}</h3><p>{events[active][2]}</p></div><a href={`https://maps.google.com/?q=${encodeURIComponent(events[active][2]+' Lahore')}`} target="_blank" rel="noreferrer">MAP ↗</a></article></section>
-  <section className="sunehri-reply" id="sunehri-reply"><div className="sunehri-reply-title"><span className="sunehri-kicker">KINDLY RESPOND</span><h2>Will you join<br/>our table?</h2><p>Tell us which evenings we can welcome you.</p><span className="sunehri-vine">❧</span></div>{sent?<div className="sunehri-thanks"><span>✦</span><h3>Your reply has arrived</h3><p>Thank you. We look forward to celebrating together.</p></div>:<form onSubmit={submit}><label>Name<input required name="name" autoComplete="name" placeholder="Your name"/></label><label>Can you join us?<select name="attendance" defaultValue="" required><option value="" disabled>Select a response</option><option>Happily, yes</option><option>With regret, no</option></select></label><fieldset><legend>Choose the evenings</legend>{events.map(e=><label className="sunehri-check" key={e[0]}><input type="checkbox" name="events" value={e[0]}/><span>{e[0]}</span><small>{e[1].split(' · ')[0]}</small></label>)}</fieldset><label>A note for the couple<textarea name="message" rows="3" placeholder="Optional message"/></label><button type="submit">SEND RSVP <span>↗</span></button><small className="sunehri-local">Preview reply only · saved locally in this browser</small></form>}</section>
-  <footer className="sunehri-footer"><span>WITH LOVE, ALWAYS</span><strong>{groom} <i>&amp;</i> {bride}</strong><small>LAHORE · 25 MARCH 2027</small><a className="photo-credit" href="https://unsplash.com/photos/gold-uplight-chandelier-on-ceiling-JLWiAwkRnpA" target="_blank" rel="noreferrer">HALL PHOTOGRAPH · ASYA / UNSPLASH</a><a href="#">BACK TO THE BEGINNING ↑</a></footer>
- </main>
+export default function SunehriInvitation() {
+    const [open, setOpen] = useState(false), [guest, setGuest] = useState('Dear family and friends'), [bride, setBride] = useState('Fatima'), [groom, setGroom] = useState('Ali'), [count, setCount] = useState([0, 0, 0, 0]), [sent, setSent] = useState(false), [active, setActive] = useState(1);
+    useEffect(() => {
+        const q = new URLSearchParams(location.search);
+        setGuest(q.get('guest')?.trim() || 'Dear family and friends');
+        setBride(q.get('bride')?.trim() || 'Fatima');
+        setGroom(q.get('groom')?.trim() || 'Ali');
+        const tick = () => {
+            const ms = Math.max(0, new Date('2027-03-25T18:00:00+05:00').getTime() - Date.now());
+            setCount([Math.floor(ms / 86400000), Math.floor(ms / 3600000) % 24, Math.floor(ms / 60000) % 60, Math.floor(ms / 1000) % 60])
+        };
+        tick();
+        const timer = setInterval(tick, 1000);
+        return () => clearInterval(timer)
+    }, []);
+    const submit = e => {
+        e.preventDefault();
+        const f = new FormData(e.currentTarget), r = Object.fromEntries(f);
+        r.events = f.getAll('events');
+        try {
+            localStorage.setItem('sunehri-rsvp', JSON.stringify(r))
+        } catch {
+        }
+        setSent(true)
+    };
+    return <main className="sunehri">
+        {!open && <button className="sunehri-gate" type="button" onClick={() => setOpen(true)}
+                          aria-label="Open the golden invitation"><span className="sunehri-gate-photo"
+                                                                        style={{backgroundImage: `linear-gradient(180deg,rgba(27,17,15,.25),rgba(27,17,15,.87)),url(${image})`}}/><span
+            className="sunehri-seal">✦</span><small>AN INVITATION, SEALED WITH
+            LOVE</small><strong>{groom}<i>&amp;</i>{bride}</strong><em>{guest}</em><b>PRESS TO UNFOLD THE EVENING</b>
+        </button>}
+        <header className="sunehri-hero"
+                style={{backgroundImage: `linear-gradient(90deg,rgba(22,14,13,.76),rgba(22,14,13,.18)),url(${image})`}}>
+            <div className="sunehri-hero-frame">
+                <div className="sunehri-top"><span>THE WEDDING OF</span><a href="#sunehri-reply">YOUR REPLY ↗</a></div>
+                <div className="sunehri-title"><span className="sunehri-kicker">A CELEBRATION IN THREE ACTS</span>
+                    <p>{guest}</p><h1>{groom}<i>&amp;</i>{bride}</h1><span className="sunehri-calligraphy">with their families</span>
+                    <div className="sunehri-rule"><i>✧</i></div>
+                    <span className="sunehri-date">25 · 03 · 2027 <b>—</b> LAHORE</span><a href="#sunehri-letter">UNFOLD
+                        THE DETAILS ↓</a></div>
+                <div className="sunehri-side-note">AN EVENING OF LIGHT<br/>LOVE · FAMILY · JOY</div>
+            </div>
+        </header>
+        <section className="sunehri-letter" id="sunehri-letter">
+            <div className="sunehri-letter-panel"><span className="sunehri-kicker">BY THE GRACE OF ALLAH</span><span
+                className="sunehri-arabic">بَارَكَ اللّٰهُ لَكُمَا</span><h2>With our families<br/>beside us, we begin.
+            </h2><p>We warmly invite you to celebrate the marriage of {groom} and {bride}. Your prayers have always been
+                a blessing; your presence will make our joy complete.</p>
+                <div className="sunehri-family"><span>{groom}’s family</span><i>✦</i><span>{bride}’s family</span></div>
+            </div>
+        </section>
+        <section className="sunehri-hall">
+            <div className="sunehri-hall-image" style={{backgroundImage: `url(${image})`}}/>
+            <div className="sunehri-hall-copy"><span className="sunehri-kicker">THE SETTING</span><h2>Gather
+                beneath<br/>the golden lights</h2><p>An evening of warmth, old stories and new beginnings. We’ll be
+                waiting at the Grand Hall.</p><a href="https://maps.google.com/?q=Grand+Hall+Lahore" target="_blank"
+                                                 rel="noreferrer">DIRECTIONS TO THE HALL <b>↗</b></a>
+                <div className="sunehri-ornament">❦</div>
+            </div>
+        </section>
+        <section className="sunehri-count"><span className="sunehri-kicker">UNTIL THE NIKKAH</span><h2>Every moment
+            brings us closer</h2>
+            <div className="sunehri-clock">{count.map((v, i) => <article key={i}>
+                <b>{String(v).padStart(i ? 2 : 1, '0')}</b><small>{['DAYS', 'HOURS', 'MINUTES', 'SECONDS'][i]}</small>
+            </article>)}</div>
+            <span className="sunehri-count-date">THURSDAY · 25 MARCH 2027 · 6:00 PM</span></section>
+        <section className="sunehri-events">
+            <div className="sunehri-events-title"><span className="sunehri-kicker">A THREE-DAY GATHERING</span>
+                <h2>Choose your<br/>celebration</h2><p>Each evening has its own little magic.</p></div>
+            <div className="sunehri-tabs">{events.map((e, i) => <button type="button" key={e[0]}
+                                                                        className={active === i ? 'active' : ''}
+                                                                        onClick={() => setActive(i)}>
+                <small>0{i + 1}</small><span>{e[0]}</span></button>)}</div>
+            <article className="sunehri-event-detail"><span className="sunehri-event-star">✦</span>
+                <div><span className="sunehri-kicker">{events[active][1]}</span><h3>{events[active][0]}</h3>
+                    <p>{events[active][2]}</p></div>
+                <a href={`https://maps.google.com/?q=${encodeURIComponent(events[active][2] + ' Lahore')}`}
+                   target="_blank" rel="noreferrer">MAP ↗</a></article>
+        </section>
+        <section className="sunehri-reply" id="sunehri-reply">
+            <div className="sunehri-reply-title"><span className="sunehri-kicker">KINDLY RESPOND</span><h2>Will you join<br/>our
+                table?</h2><p>Tell us which evenings we can welcome you.</p><span className="sunehri-vine">❧</span>
+            </div>
+            {sent ? <div className="sunehri-thanks"><span>✦</span><h3>Your reply has arrived</h3><p>Thank you. We look
+                    forward to celebrating together.</p></div> :
+                <form onSubmit={submit}><label>Name<input required name="name" autoComplete="name"
+                                                          placeholder="Your name"/></label><label>Can you join
+                    us?<select name="attendance" defaultValue="" required>
+                        <option value="" disabled>Select a response</option>
+                        <option>Happily, yes</option>
+                        <option>With regret, no</option>
+                    </select></label>
+                    <fieldset>
+                        <legend>Choose the evenings</legend>
+                        {events.map(e => <label className="sunehri-check" key={e[0]}><input type="checkbox"
+                                                                                            name="events" value={e[0]}/><span>{e[0]}</span><small>{e[1].split(' · ')[0]}</small></label>)}
+                    </fieldset>
+                    <label>A note for the couple<textarea name="message" rows="3"
+                                                          placeholder="Optional message"/></label>
+                    <button type="submit">SEND RSVP <span>↗</span></button>
+                    <small className="sunehri-local">Preview reply only · saved locally in this browser</small></form>}
+        </section>
+        <footer className="sunehri-footer"><span>WITH LOVE, ALWAYS</span><strong>{groom} <i>&amp;</i> {bride}
+        </strong><small>LAHORE · 25 MARCH 2027</small></footer>
+    </main>
 }

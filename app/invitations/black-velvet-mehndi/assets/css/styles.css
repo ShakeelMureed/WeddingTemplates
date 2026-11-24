@@ -1766,3 +1766,15 @@ text-shadow: 0 0 2px #000, 0 1px 3px #000, 0 2px 14px rgba(0,0,0,.95), 0 0 34px 
 #invitation.black-velvet { container-type: inline-size; }
 #invitation.black-velvet .scratch-section .section-heading h2 { color: var(--ivory); }
 #invitation.black-velvet .scratch-section .scratch-note { color: rgba(241,227,206,.78); }
+
+#invitation.black-velvet .families-section h2,
+#invitation.black-velvet .countdown-section .section-heading h2,
+#invitation.black-velvet .countdown strong,
+#invitation.black-velvet section.program-section.section-pad .section-shell.program-shell h2,
+#invitation.black-velvet .timeline h3,
+#invitation.black-velvet .timeline p,
+#invitation.black-velvet .closing-arch .bismillah,
+#invitation.black-velvet .dua-translation,
+#invitation.black-velvet .closing-section h2 {
+    color: #fff;
+}

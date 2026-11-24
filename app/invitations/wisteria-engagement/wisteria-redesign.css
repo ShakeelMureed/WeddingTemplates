@@ -1,0 +1,387 @@
+/* Wider editorial venue and RSVP chapters for the moonlit Wisteria invitation. */
+.wisteria-root .promise-letter {
+  min-height: 28rem;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: clamp(5rem, 12vw, 9rem) 1.5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.96), rgba(255,255,255,.48) 42%, transparent 68%),
+    linear-gradient(180deg, #f8f5fb, #eee5f5 54%, #f8f5fb);
+}
+.wisteria-root .promise-letter::before,
+.wisteria-root .promise-letter::after {
+  position: absolute;
+  top: 50%;
+  width: min(22vw, 15rem);
+  aspect-ratio: 1;
+  content: "✧";
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(155,123,184,.24);
+  border-radius: 50%;
+  color: rgba(155,123,184,.62);
+  font-size: clamp(2rem, 5vw, 4rem);
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 1rem rgba(255,255,255,.22), 0 0 0 2rem rgba(155,123,184,.045);
+  pointer-events: none;
+}
+.wisteria-root .promise-letter::before { left: max(-8rem, calc((100vw - 90rem) / 2)); }
+.wisteria-root .promise-letter::after { right: max(-8rem, calc((100vw - 90rem) / 2)); }
+.wisteria-root .promise-letter .h2 { max-width: 17ch; margin: .4rem auto .8rem; font-size: clamp(3rem, 7vw, 5rem); }
+.wisteria-root .promise-letter .lede { max-width: 34rem; font-size: clamp(1.1rem, 2vw, 1.35rem); }
+.wisteria-root .promise-letter .divider { width: min(15rem, 50%); margin-top: 1.5rem; }
+
+.wisteria-root .family-chapter {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(200,162,216,.22), transparent 55%),
+    #f7f2f9;
+}
+.wisteria-root .family-chapter::before { inset: 1.4rem clamp(1rem, 5vw, 5rem); border-radius: 48% 48% 1.2rem 1.2rem; }
+.wisteria-root .family-pair { width: min(100%, 58rem); gap: clamp(.5rem, 2.5vw, 2rem); margin: 2.5rem auto 1.5rem; }
+.wisteria-root .family-pair article {
+  position: relative;
+  min-height: clamp(9rem, 18vw, 13rem);
+  gap: .75rem;
+  padding: 1.5rem 1rem;
+  border: 1px solid rgba(155,123,184,.36);
+  border-radius: 46% 46% .8rem .8rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(238,229,245,.74));
+  box-shadow: 0 20px 42px -30px rgba(74,53,87,.55), inset 0 0 0 5px rgba(255,255,255,.65);
+}
+.wisteria-root .family-pair article::before { content: "❧"; color: var(--wisteria); font-size: 1.3rem; line-height: 1; }
+.wisteria-root .family-pair article span { font-family: var(--caps); font-size: .62rem; letter-spacing: .19em; text-transform: uppercase; }
+.wisteria-root .family-pair article strong { font-size: clamp(.72rem, 1.6vw, 1rem); letter-spacing: .04em; }
+.wisteria-root .family-pair > i { display: grid; place-items: center; width: 2.8rem; aspect-ratio: 1; border: 1px solid rgba(201,169,110,.6); border-radius: 50%; background: #f8f5fb; box-shadow: 0 0 0 .5rem rgba(248,245,251,.6); }
+.wisteria-root .family-note { max-width: 34rem; font-family: var(--script); font-size: clamp(1.6rem, 4vw, 2.15rem); color: var(--plum); }
+
+.wisteria-root .date-chapter {
+  padding: clamp(4.5rem, 9vw, 7rem) clamp(1rem, 5vw, 4rem);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.75), transparent 55%),
+    linear-gradient(145deg, #e8deef, #f8f5fb 48%, #e9e0f1);
+}
+.wisteria-root .date-chapter .h2 { margin-bottom: 1.1rem; font-size: clamp(2.8rem, 6vw, 4rem); }
+.wisteria-root .wisteria-scratch-card { min-height: 19rem; border-radius: 1.2rem; box-shadow: 0 28px 70px -40px rgba(46,30,65,.65), inset 0 0 0 8px rgba(255,255,255,.6); }
+.wisteria-root .wisteria-scratch-copy { gap: .8rem; }
+.wisteria-root .wisteria-scratch-copy strong { font-size: clamp(2.5rem, 7vw, 4.5rem); }
+.wisteria-root .wisteria-scratch-card button { right: 50%; bottom: 1rem; transform: translateX(50%); padding: .65rem 1rem; box-shadow: 0 8px 20px rgba(29,21,52,.25); }
+
+.wisteria-root .venue {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  grid-template-areas:
+    "eyebrow image"
+    "name image"
+    "when image"
+    "address image"
+    "map image";
+  align-content: center;
+  align-items: center;
+  column-gap: clamp(2rem, 7vw, 7rem);
+  row-gap: 0;
+  max-width: 100%;
+  min-height: 43rem;
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.5rem, 8vw, 9rem);
+  text-align: left;
+  background:
+    radial-gradient(ellipse at 12% 20%, rgba(200, 162, 216, .24), transparent 35%),
+    radial-gradient(ellipse at 88% 10%, rgba(255,255,255,.9), transparent 30%),
+    linear-gradient(125deg, #f8f5fb 0%, #eee5f5 55%, #e4d9ef 100%);
+}
+.wisteria-root .venue::before {
+  position: absolute;
+  top: 2.2rem;
+  right: clamp(1.5rem, 6vw, 6rem);
+  width: 3.2rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  content: "✦";
+  border: 1px solid rgba(155,123,184,.3);
+  border-radius: 50%;
+  color: var(--gold);
+  box-shadow: 0 0 0 .45rem rgba(255,255,255,.32);
+}
+.wisteria-root .venue > .eyebrow { grid-area: eyebrow; align-self: end; }
+.wisteria-root .venue-name { grid-area: name; margin: .15rem 0 .35rem; font-size: clamp(3.1rem, 6vw, 5.4rem); text-shadow: 0 7px 26px rgba(155,123,184,.16); }
+.wisteria-root .venue-when { grid-area: when; max-width: 30rem; padding: .45rem 0 .45rem 1rem; border-left: 1px solid rgba(155,123,184,.52); line-height: 1.9; }
+.wisteria-root .venue-addr { grid-area: address; max-width: 25rem; margin: .1rem 0 1.35rem; font-size: 1.15rem; }
+.wisteria-root .venue > .pill { grid-area: map; justify-self: start; }
+.wisteria-root .venue > .pill::before { content: "↗"; font-family: var(--serif); font-size: 1rem; letter-spacing: 0; }
+.wisteria-root .venue-art {
+  grid-area: image;
+  width: 100%;
+  margin: 0;
+  padding: .65rem;
+  border: 1px solid rgba(155, 123, 184, .42);
+  border-radius: 46% 46% 1.4rem 1.4rem;
+  background: rgba(255, 255, 255, .62);
+  box-shadow: 0 32px 78px -34px rgba(46, 30, 65, .62), inset 0 0 0 4px rgba(255,255,255,.72);
+  transform: rotate(.7deg);
+  isolation: isolate;
+}
+.wisteria-root .venue-art::after {
+  position: absolute;
+  inset: auto .65rem .65rem;
+  display: grid;
+  place-items: center;
+  min-height: 4.5rem;
+  padding: .8rem 1rem;
+  content: "THE COURTYARD  ·  6 NOVEMBER 2027";
+  border-radius: 0 0 46% 46%;
+  background: linear-gradient(transparent, rgba(29,21,52,.78));
+  color: #fff;
+  font-family: var(--caps);
+  font-size: clamp(.55rem, 1.2vw, .72rem);
+  letter-spacing: .22em;
+  text-align: center;
+  text-shadow: 0 1px 10px rgba(29,21,52,.6);
+  pointer-events: none;
+}
+.wisteria-root .venue-art img {
+  width: 100%;
+  aspect-ratio: 1.36 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 46% 46% 1rem 1rem;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.wisteria-root .rsvp {
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.25rem, 5vw, 4rem);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(200,162,216,.32), transparent 48%),
+    linear-gradient(160deg, #1d1534 0%, #382750 38%, #e6ddf2 38.2%, #f8f5fb 100%);
+}
+.wisteria-root .rsvp .card {
+  width: min(100%, 54rem);
+  max-width: none;
+  padding: clamp(2rem, 5vw, 4rem);
+  border: 1px solid rgba(200,162,216,.62);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.97), rgba(248,245,251,.91)),
+    url(./assets/img/paper.webp) center / 540px;
+  box-shadow: 0 32px 90px -48px rgba(19,11,38,.8), inset 0 0 0 7px rgba(255,255,255,.7);
+}
+.wisteria-root .rsvp .card::before,
+.wisteria-root .rsvp .card::after {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(155,123,184,.5), transparent);
+}
+.wisteria-root .rsvp .card::before { top: 1.15rem; }
+.wisteria-root .rsvp .card::after { bottom: 1.15rem; }
+.wisteria-root .rsvp .card > .eyebrow { margin-top: .5rem; }
+.wisteria-root .rsvp .card > .h2 { margin-bottom: 1.8rem; font-size: clamp(2.8rem, 6vw, 4rem); }
+.wisteria-root .rsvp form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.25rem;
+  align-items: start;
+}
+.wisteria-root .rsvp form label.l { margin-top: .6rem; }
+.wisteria-root .rsvp form label:nth-of-type(1) { grid-column: 1; grid-row: 1; }
+.wisteria-root .rsvp form #guestName { grid-column: 1; grid-row: 2; }
+.wisteria-root .rsvp form label:nth-of-type(2) { grid-column: 2; grid-row: 1; }
+.wisteria-root .rsvp form #guestReply { grid-column: 2; grid-row: 2; }
+.wisteria-root .rsvp form label:nth-of-type(3) { grid-column: 1 / -1; grid-row: 3; }
+.wisteria-root .rsvp form #guestNote { grid-column: 1 / -1; grid-row: 4; min-height: 7rem; }
+.wisteria-root .rsvp form .pill { grid-column: 1 / -1; grid-row: 5; justify-self: center; width: min(100%, 22rem); }
+.wisteria-root .rsvp input[type=text],
+.wisteria-root .rsvp select,
+.wisteria-root .rsvp textarea {
+  border-radius: .8rem;
+  border-color: rgba(155,123,184,.35);
+  background: rgba(255,255,255,.78);
+}
+.wisteria-root .rsvp .contacts { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid rgba(155,123,184,.22); }
+.wisteria-root .rsvp .contact b { font-family: var(--caps); font-size: .72rem; font-weight: 400; letter-spacing: .16em; text-transform: uppercase; }
+
+.wisteria-root .rsvp {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(460px, 1.15fr);
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 7rem);
+  min-height: 46rem;
+  padding: clamp(5rem, 10vw, 9rem) max(7vw, 1.5rem);
+  text-align: left;
+  background:
+    radial-gradient(ellipse at 10% 40%, rgba(200,162,216,.18), transparent 36%),
+    linear-gradient(130deg, #211733 0%, #3b2a59 45%, #ece3f2 45.2%, #f8f5fb 100%);
+}
+.wisteria-root .wisteria-rsvp-intro { position: relative; z-index: 1; width: min(100%, 31rem); justify-self: end; }
+.wisteria-root .wisteria-rsvp-intro .eyebrow { color: var(--lilac); }
+.wisteria-root .wisteria-rsvp-intro .h2 { margin: .7rem 0 1rem; color: #fff; font-size: clamp(3.4rem, 7vw, 4rem); }
+.wisteria-root .rsvp-welcome { max-width: 26rem; margin: 0; color: rgba(243,236,251,.82); font-size: clamp(1.08rem, 2vw, 1.25rem); font-style: italic; }
+.wisteria-root .rsvp-event-note { display: grid; gap: .2rem; margin-top: 2rem; padding-left: 1rem; border-left: 1px solid rgba(230,210,255,.52); color: rgba(243,236,251,.8); }
+.wisteria-root .rsvp-event-note span { font-family: var(--caps); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; }
+.wisteria-root .rsvp-event-note strong { color: #fff; font-family: var(--serif); font-size: 1.25rem; font-weight: 500; }
+.wisteria-root .wisteria-rsvp-intro > img { width: 8rem; height: auto; margin-top: 1.4rem; filter: brightness(0) invert(1); opacity: .7; }
+.wisteria-root .rsvp .card { width: min(100%, 47rem); max-width: none; justify-self: start; padding: clamp(1.8rem, 4vw, 3.2rem); border-radius: .35rem; }
+.wisteria-root .rsvp-card-heading { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin: .2rem 0 1.2rem; color: #78628e; font-family: var(--caps); font-size: .58rem; letter-spacing: .18em; }
+.wisteria-root .rsvp-card-heading i { color: var(--gold); font-size: 1rem; font-style: normal; }
+.wisteria-root .rsvp form { position: relative; z-index: 1; }
+.wisteria-root .rsvp .contacts { position: relative; z-index: 1; }
+.wisteria-root .rsvp .contact { text-align: center; }
+.wisteria-root .rsvp .contact span { display: block; margin-top: .2rem; }
+
+/* Save the Date follows Mithril's editorial copy + invitation-card composition. */
+.wisteria-root .date-chapter {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(460px, 1.1fr);
+  align-items: center;
+  gap: clamp(2.5rem, 8vw, 8rem);
+  min-height: 46rem;
+  padding: clamp(5rem, 10vw, 9rem) max(7vw, 1.5rem);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 12% 20%, rgba(200,162,216,.24), transparent 35%),
+    linear-gradient(120deg, #eee6f3, #fbf8fc 52%, #e9deef);
+  text-align: left;
+}
+.wisteria-root .date-chapter::before,
+.wisteria-root .date-chapter::after {
+  position: absolute;
+  z-index: -1;
+  width: 28rem;
+  aspect-ratio: 1;
+  content: "";
+  border: 1px solid rgba(155,123,184,.17);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.wisteria-root .date-chapter::before { left: -15rem; bottom: -12rem; box-shadow: 0 0 0 1.5rem rgba(155,123,184,.035), 0 0 0 3rem rgba(155,123,184,.025); }
+.wisteria-root .date-chapter::after { top: -20rem; right: -16rem; width: 38rem; }
+.wisteria-root .wisteria-date-copy { position: relative; z-index: 1; width: min(100%, 32rem); justify-self: end; }
+.wisteria-root .wisteria-date-copy .eyebrow { color: var(--wisteria); }
+.wisteria-root .wisteria-date-copy .h2 { margin: 1rem 0 0; font-size: clamp(4rem, 8vw, 4rem); line-height: .88; }
+.wisteria-root .wisteria-date-copy > img { width: 9rem; height: auto; margin: 1.5rem 0; }
+.wisteria-root .wisteria-date-copy > p:not(.eyebrow) { max-width: 27rem; margin: 0; color: var(--plum-soft); font-size: clamp(1.1rem, 2vw, 1.4rem); font-style: italic; line-height: 1.65; }
+.wisteria-root .wisteria-date-caption { display: block; max-width: 27rem; margin-top: 1.8rem; padding-top: 1rem; border-top: 1px solid rgba(155,123,184,.35); color: var(--wisteria); font-family: var(--caps); font-size: .61rem; letter-spacing: .17em; line-height: 1.9; text-transform: uppercase; }
+.wisteria-root .wisteria-date-frame { position: relative; z-index: 1; width: min(100%, 52rem); justify-self: start; padding: clamp(1.4rem, 3.6vw, 2.9rem); border: 1px solid rgba(155,123,184,.48); background: rgba(255,253,255,.82); box-shadow: 0 35px 90px rgba(55,37,72,.15), inset 0 0 0 5px rgba(255,255,255,.65); }
+.wisteria-root .wisteria-date-frame::before { position: absolute; inset: .55rem; border: 1px solid rgba(155,123,184,.2); content: ""; pointer-events: none; }
+.wisteria-root .wisteria-date-topline { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin: 0 .2rem 1rem; color: #78628e; font-family: var(--caps); font-size: clamp(.48rem, .8vw, .62rem); letter-spacing: .2em; }
+.wisteria-root .wisteria-date-topline i { color: var(--gold); font-size: 1rem; font-style: normal; }
+.wisteria-root .wisteria-date-frame .wisteria-scratch-card { position: relative; z-index: 2; width: 100%; min-height: 0; aspect-ratio: 1.55; margin: 0; border: 1px solid rgba(155,123,184,.62); border-radius: 2px; background: radial-gradient(ellipse at center, #fffefe, #f2eaf5); box-shadow: inset 0 0 0 8px rgba(155,123,184,.045), 0 15px 42px rgba(46,30,65,.1); }
+.wisteria-root .wisteria-date-frame .wisteria-scratch-card::before { inset: 1rem; place-items: start center; padding-top: .55rem; border-color: rgba(155,123,184,.3); }
+.wisteria-root .wisteria-date-frame .wisteria-scratch-copy { gap: .35rem; padding: 1rem; }
+.wisteria-root .wisteria-date-frame .wisteria-scratch-copy span { color: #78628e; font-size: clamp(.48rem, .9vw, .67rem); letter-spacing: .22em; }
+.wisteria-root .wisteria-date-frame .wisteria-scratch-copy strong { margin-top: .35rem; color: var(--plum); font-size: clamp(2.5rem, 5vw, 4.4rem); }
+.wisteria-root .wisteria-date-frame .wisteria-scratch-copy small { color: var(--plum-soft); font-size: clamp(.74rem, 1.1vw, .95rem); }
+.wisteria-root .wisteria-date-frame .wisteria-scratch-card button { right: 50%; bottom: .8rem; transform: translateX(50%); padding: .55rem .9rem; border: 1px solid rgba(155,123,184,.4); border-radius: 999px; background: rgba(255,253,255,.94); color: var(--plum); font-size: .53rem; box-shadow: 0 5px 16px rgba(46,30,65,.12); }
+.wisteria-root .wisteria-scratch-prompt { position: relative; z-index: 2; margin: 1rem 0 0; color: #786b80; font-size: .94rem; font-style: italic; text-align: center; }
+
+.wisteria-root .constel {
+  min-height: 43rem;
+  padding: clamp(5rem, 9vw, 8rem) 1.4rem;
+  background:
+    radial-gradient(ellipse at 50% 55%, rgba(116,88,151,.42), transparent 43%),
+    radial-gradient(circle at 12% 22%, rgba(255,255,255,.1) 0 1px, transparent 2px),
+    linear-gradient(180deg, #271b40, #171126 90%);
+}
+.wisteria-root .constel::before,
+.wisteria-root .constel::after { position: absolute; content: "✦"; color: rgba(255,243,201,.6); text-shadow: 0 0 16px rgba(255,243,201,.8); animation: wisteria-starPulse 3s infinite; }
+.wisteria-root .constel::before { top: 18%; left: 17%; }
+.wisteria-root .constel::after { right: 16%; bottom: 18%; font-size: 1.5rem; animation-delay: 1s; }
+.wisteria-root .constel .h2 { max-width: 15ch; margin: .3rem auto; font-size: clamp(2.8rem, 6vw, 4.2rem); }
+.wisteria-root .constel .lede { max-width: 30rem; }
+.wisteria-root .heart-sky { width: min(24rem, 78vw); margin-top: 2.2rem; }
+.wisteria-root .heart-path { stroke: rgba(230,210,255,.4); stroke-width: .5; }
+.wisteria-root .c-star { width: 3.2rem; height: 3.2rem; margin: -1.6rem 0 0 -1.6rem; }
+.wisteria-root .heart-msg { margin-top: 1.1rem; }
+
+.wisteria-root .wall {
+  padding: clamp(4.5rem, 8vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(103,77,132,.34), transparent 48%),
+    linear-gradient(180deg, #1a132d, #2a1d43 55%, #1c142f);
+}
+.wisteria-root .wall .h2 { max-width: 15ch; margin: .2rem auto .5rem; font-size: clamp(2.8rem, 6vw, 4rem); }
+.wisteria-root .wall .sky { width: min(100%, 58rem); height: clamp(16rem, 34vw, 25rem); margin: 1.5rem auto 0; border-bottom: 1px solid rgba(230,210,255,.18); }
+.wisteria-root .wall .lan { width: clamp(2.8rem, 5vw, 4rem); filter: drop-shadow(0 0 12px rgba(255,214,140,.32)); }
+.wisteria-root .wall .dua-form { width: min(100%, 38rem); max-width: none; margin-top: 1.6rem; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid rgba(200,162,216,.28); border-radius: 1rem; background: rgba(255,255,255,.055); box-shadow: inset 0 1px rgba(255,255,255,.08); }
+.wisteria-root .wall .dua-count { text-align: center; }
+
+.wisteria-root .night.near .close-text { top: 50%; left: 50%; right: auto; width: min(90%, 42rem); padding: clamp(1.5rem, 5vw, 3.5rem); border: 1px solid rgba(243,236,251,.28); border-radius: 50% 50% 1rem 1rem; background: radial-gradient(ellipse at 50% 45%, rgba(29,21,52,.82), rgba(29,21,52,.48) 72%, transparent); transform: translate(-50%, -50%); }
+.wisteria-root .night.near .close-guest { max-width: 28rem; margin: 1.5rem auto .2rem; font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.2; }
+
+@media (max-width: 700px) {
+  .wisteria-root .promise-letter { min-height: 25rem; }
+  .wisteria-root .promise-letter::before,
+  .wisteria-root .promise-letter::after { width: 6rem; opacity: .5; }
+  .wisteria-root .promise-letter::before { left: -3.5rem; }
+  .wisteria-root .promise-letter::after { right: -3.5rem; }
+  .wisteria-root .family-pair { gap: .45rem; }
+  .wisteria-root .family-pair article { min-height: 8.5rem; padding: 1.2rem .45rem; }
+  .wisteria-root .family-pair article strong { font-size: .66rem; }
+  .wisteria-root .family-pair > i { width: 2rem; font-size: .8rem; }
+  .wisteria-root .wisteria-scratch-card { min-height: 16rem; aspect-ratio: 1.25; }
+  .wisteria-root .wisteria-scratch-copy { padding: 1.7rem 1rem 3.6rem; }
+  .wisteria-root .wisteria-scratch-copy strong { font-size: clamp(2rem, 9vw, 3rem); }
+  .wisteria-root .constel { min-height: 37rem; }
+  .wisteria-root .night.near .close-text { top: 45%; }
+  .wisteria-root .venue {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "eyebrow" "name" "when" "image" "address" "map";
+    min-height: 0;
+    padding: 4.5rem 1.4rem;
+    text-align: center;
+  }
+  .wisteria-root .venue > .eyebrow,
+  .wisteria-root .venue-name,
+  .wisteria-root .venue-when,
+  .wisteria-root .venue-addr,
+  .wisteria-root .venue > .pill { justify-self: center; }
+  .wisteria-root .venue-when { margin-bottom: 1rem; }
+  .wisteria-root .venue::before { top: 1rem; right: 1rem; width: 2.5rem; }
+  .wisteria-root .venue-art { width: min(100%, 28rem); margin: .8rem auto 1rem; }
+  .wisteria-root .venue-art img { aspect-ratio: 4 / 3; }
+  .wisteria-root .rsvp form { grid-template-columns: 1fr; }
+  .wisteria-root .rsvp form label:nth-of-type(1),
+  .wisteria-root .rsvp form #guestName,
+  .wisteria-root .rsvp form label:nth-of-type(2),
+  .wisteria-root .rsvp form #guestReply,
+  .wisteria-root .rsvp form label:nth-of-type(3),
+  .wisteria-root .rsvp form #guestNote,
+  .wisteria-root .rsvp form .pill { grid-column: 1; grid-row: auto; }
+}
+
+@media (max-width: 900px) {
+  .wisteria-root .rsvp { grid-template-columns: minmax(0,1fr); gap: 2.5rem; min-height: 0; padding: 5rem 7vw; background: linear-gradient(180deg, #211733 0%, #3b2a59 34%, #ece3f2 34.2%, #f8f5fb 100%); }
+  .wisteria-root .wisteria-rsvp-intro { justify-self: center; text-align: center; }
+  .wisteria-root .rsvp-welcome { margin-inline: auto; }
+  .wisteria-root .rsvp-event-note { width: fit-content; margin: 1.5rem auto 0; text-align: left; }
+  .wisteria-root .wisteria-rsvp-intro > img { margin-inline: auto; }
+  .wisteria-root .rsvp .card { justify-self: center; }
+  .wisteria-root .rsvp-card-heading { font-size: .5rem; }
+  .wisteria-root .date-chapter { grid-template-columns: minmax(0,1fr); gap: 2.5rem; min-height: 0; padding: 5rem 7vw; }
+  .wisteria-root .wisteria-date-copy { justify-self: center; text-align: center; }
+  .wisteria-root .wisteria-date-copy > img,
+  .wisteria-root .wisteria-date-copy > p:not(.eyebrow) { margin-left: auto; margin-right: auto; }
+  .wisteria-root .wisteria-date-caption { margin-left: auto; margin-right: auto; }
+  .wisteria-root .wisteria-date-frame { justify-self: center; }
+}
+@media (max-width: 560px) {
+  .wisteria-root .rsvp { gap: 2rem; padding: 4.5rem 1rem; }
+  .wisteria-root .wisteria-rsvp-intro .h2 { font-size: clamp(3rem, 14vw, 4rem); }
+  .wisteria-root .rsvp .card { padding: 1.5rem 1.15rem; }
+  .wisteria-root .rsvp-card-heading { letter-spacing: .1em; }
+  .wisteria-root .date-chapter { gap: 2rem; padding: 4.5rem 1rem; }
+  .wisteria-root .wisteria-date-copy .h2 { font-size: clamp(3.6rem, 17vw, 5rem); }
+  .wisteria-root .wisteria-date-frame { padding: 1.1rem .8rem; }
+  .wisteria-root .wisteria-date-topline { font-size: .45rem; letter-spacing: .13em; }
+  .wisteria-root .wisteria-date-frame .wisteria-scratch-card { aspect-ratio: 1.18; }
+  .wisteria-root .wisteria-date-frame .wisteria-scratch-copy { padding: 1.4rem .65rem 3.4rem; }
+  .wisteria-root .wisteria-date-frame .wisteria-scratch-copy strong { font-size: clamp(2rem, 10vw, 3.1rem); }
+  .wisteria-root .wisteria-date-frame .wisteria-scratch-copy small { font-size: .75rem; }
+}

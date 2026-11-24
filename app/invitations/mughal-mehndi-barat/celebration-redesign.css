@@ -1,0 +1,114 @@
+#invitation.mughal-mehndi-barat .diya-section {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 0%, rgba(157,45,51,.25), transparent 42%), linear-gradient(140deg,#240d13,#3b1118 58%,#1d0b10);
+  color: #f8eddb;
+}
+#invitation.mughal-mehndi-barat .diya-layout { display:grid; grid-template-columns:minmax(0,.85fr) minmax(340px,1.15fr); align-items:center; gap:clamp(2rem,7vw,7rem); width:min(100%,82rem); }
+#invitation.mughal-mehndi-barat .diya-section .section-heading { margin:0; text-align:left; }
+#invitation.mughal-mehndi-barat .diya-section .section-heading .eyebrow { color:#d6b46f; }
+#invitation.mughal-mehndi-barat .diya-section .section-heading h2 { color:#fff3df; font-size:clamp(3rem,6vw,5rem); }
+#invitation.mughal-mehndi-barat .diya-section .ornament { margin-left:0; }
+#invitation.mughal-mehndi-barat .diya-intro,#invitation.mughal-mehndi-barat .dhol-intro { max-width:27rem; margin:1.3rem 0 0; color:rgba(248,237,219,.77); font-size:1.08rem; font-style:italic; line-height:1.7; }
+#invitation.mughal-mehndi-barat .diya-display { padding:clamp(1.5rem,4vw,3rem) clamp(1rem,3vw,2.25rem); border:1px solid rgba(201,163,90,.45); background:linear-gradient(145deg,rgba(255,247,227,.08),rgba(255,247,227,.025)); box-shadow:inset 0 0 0 6px rgba(255,255,255,.025),0 25px 70px rgba(0,0,0,.2); }
+#invitation.mughal-mehndi-barat .diya-row { display:flex; justify-content:center; align-items:flex-end; gap:clamp(.3rem,2vw,1.2rem); max-width:38rem; margin:0 auto; padding:1rem 0 .75rem; border-bottom:1px solid rgba(201,163,90,.3); }
+#invitation.mughal-mehndi-barat .diya { position:relative; display:grid; place-items:center; flex:0 1 5.4rem; width:clamp(3.5rem,7vw,5.4rem); height:clamp(4.5rem,9vw,6rem); padding:0; border:0; background:none; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+#invitation.mughal-mehndi-barat .diya::before { position:absolute; left:7%; right:7%; bottom:0; height:40%; content:""; border:1px solid #e2bf76; border-radius:12% 12% 48% 48% / 20% 20% 80% 80%; background:linear-gradient(180deg,#d8ae5a,#8d512d 54%,#54251e); box-shadow:inset 0 2px 4px rgba(255,232,161,.45),0 8px 16px rgba(0,0,0,.3); transition:filter .35s,transform .35s; }
+#invitation.mughal-mehndi-barat .diya::after { position:absolute; left:50%; top:18%; width:19%; height:42%; content:""; border-radius:50% 50% 42% 42%; background:radial-gradient(ellipse at 50% 75%,#fff9cb 0 18%,#ffd978 35%,#ed7b2e 68%,transparent 76%); opacity:0; filter:drop-shadow(0 0 9px #ffb840); transform:translate(-50%,30%) scale(.45); transform-origin:50% 90%; transition:opacity .25s,transform .3s; }
+#invitation.mughal-mehndi-barat .diya span { position:absolute; z-index:1; top:37%; color:#ffcf70; font-size:.9rem; opacity:.45; transition:opacity .3s; }
+#invitation.mughal-mehndi-barat .diya.is-lit::after { opacity:1; transform:translate(-50%,0) scale(1); animation:mughal-diya-flicker 1.4s ease-in-out infinite alternate; }
+#invitation.mughal-mehndi-barat .diya.is-lit::before { filter:brightness(1.2); transform:translateY(-2px); }
+#invitation.mughal-mehndi-barat .diya.is-lit span { opacity:0; }
+@keyframes mughal-diya-flicker { to { filter:drop-shadow(0 0 14px #ffd36e); transform:translate(-50%,-2px) scale(.92,1.07); } }
+#invitation.mughal-mehndi-barat .diya-display .scratch-note { min-height:1.5em; margin:1rem 0 0; color:#e8d2aa; font-style:italic; text-align:center; }
+
+#invitation.mughal-mehndi-barat .dhol-section { position:relative; overflow:hidden; color:#f8eddb; background:radial-gradient(ellipse at 50% 100%,rgba(141,34,40,.45),transparent 58%),linear-gradient(180deg,#16090d,#2b0d13 55%,#1b0a0d); }
+#invitation.mughal-mehndi-barat .dhol-layout { display:grid; grid-template-columns:minmax(0,.8fr) minmax(360px,1.2fr); align-items:center; gap:clamp(2rem,8vw,8rem); width:min(100%,80rem); }
+#invitation.mughal-mehndi-barat .dhol-section .section-heading { margin:0; text-align:left; }
+#invitation.mughal-mehndi-barat .dhol-section .section-heading .eyebrow { color:#d6b46f; }
+#invitation.mughal-mehndi-barat .dhol-section .section-heading h2 { color:#fff3df; font-size:clamp(3.3rem,7vw,5.7rem); }
+#invitation.mughal-mehndi-barat .dhol-section .ornament { margin-left:0; }
+#invitation.mughal-mehndi-barat .dhol-stage { padding:2rem 1rem 1.4rem; border:1px solid rgba(201,163,90,.4); background:rgba(255,255,255,.035); box-shadow:inset 0 0 0 6px rgba(255,255,255,.02); text-align:center; }
+#invitation.mughal-mehndi-barat .dhol { position:relative; isolation:isolate; display:flex; justify-content:space-between; align-items:center; width:min(100%,27rem); height:15rem; margin:0 auto; padding:0 2rem; }
+#invitation.mughal-mehndi-barat .dhol::before { position:absolute; z-index:-2; inset:20% 8%; content:""; border:3px solid #d7ae62; border-radius:50% / 33%; background:repeating-linear-gradient(90deg,transparent 0 14%,rgba(255,221,144,.38) 14.5% 15.5%,transparent 16% 24%),linear-gradient(90deg,#5a171b,#a43732 22%,#6c1d21 50%,#a43732 78%,#55151a); box-shadow:inset 0 0 0 8px rgba(50,10,15,.35),0 25px 35px rgba(0,0,0,.35); transform:rotate(-5deg); transition:transform .12s; }
+#invitation.mughal-mehndi-barat .dhol::after { position:absolute; z-index:-1; inset:10% 19%; content:""; border-top:1px solid rgba(255,221,144,.55); border-bottom:1px solid rgba(255,221,144,.55); border-radius:50% / 22%; pointer-events:none; }
+#invitation.mughal-mehndi-barat .dhol button { position:relative; z-index:1; display:grid; place-items:center; width:clamp(5rem,10vw,7rem); aspect-ratio:1; border:2px solid #edcc84; border-radius:50%; background:radial-gradient(circle at 40% 35%,#fff4da,#e8d1a0 58%,#9a623b 61%,#522a22 100%); box-shadow:0 0 0 5px rgba(22,9,11,.45),0 10px 20px rgba(0,0,0,.35); color:#5d241f; font-family:var(--font-display); font-size:1.2rem; cursor:pointer; transition:transform .12s,filter .12s; }
+#invitation.mughal-mehndi-barat .dhol button:active { transform:scale(.94); filter:brightness(1.2); }
+#invitation.mughal-mehndi-barat .dhol.is-playing::before { animation:mughal-dhol-thump .42s ease-in-out; }
+#invitation.mughal-mehndi-barat .dhol.is-playing button { animation:mughal-dhol-head .28s ease-in-out; }
+@keyframes mughal-dhol-thump { 50% { transform:rotate(-5deg) scale(1.035); filter:brightness(1.22); } }
+@keyframes mughal-dhol-head { 50% { transform:scale(.92); box-shadow:0 0 0 9px rgba(237,204,132,.15),0 10px 20px rgba(0,0,0,.35); } }
+#invitation.mughal-mehndi-barat .dhol-stage .calendar-cta { margin-top:.5rem; border-color:#d6b46f; color:#f5e7ca; }
+#invitation.mughal-mehndi-barat .dhol-stage .calendar-cta:hover { background:#d6b46f; color:#241014; }
+#invitation.mughal-mehndi-barat .dhol-stage .scratch-note { margin:1rem 0 0; color:rgba(248,237,219,.7); font-style:italic; }
+
+#invitation.mughal-mehndi-barat .blessing-section { position:relative; overflow:hidden; background:radial-gradient(ellipse at 50% 0,rgba(201,163,90,.2),transparent 58%),linear-gradient(145deg,#f1e4cf,#fbf4e8 52%,#ead9bd); text-align:center; }
+#invitation.mughal-mehndi-barat .blessing-card { position:relative; width:min(100%,58rem); padding:clamp(2.5rem,6vw,5rem) 1.5rem; border:1px solid rgba(135,89,46,.34); background:rgba(255,251,242,.7); box-shadow:inset 0 0 0 7px rgba(255,255,255,.48),0 25px 70px rgba(69,43,21,.12); }
+#invitation.mughal-mehndi-barat .blessing-card::before { position:absolute; inset:1rem; border:1px solid rgba(135,89,46,.18); content:""; pointer-events:none; }
+#invitation.mughal-mehndi-barat .blessing-card .eyebrow { color:#95713e; }
+#invitation.mughal-mehndi-barat .blessing-card h2 { position:relative; margin:1rem auto .5rem; max-width:18ch; color:#4b241f; font-family:var(--font-script); font-size:clamp(2.8rem,6vw,4.8rem); font-weight:400; line-height:1.05; }
+#invitation.mughal-mehndi-barat .blessing-rule { display:flex; align-items:center; justify-content:center; gap:.8rem; margin:.8rem auto; color:#b58a4f; }
+#invitation.mughal-mehndi-barat .blessing-rule::before,#invitation.mughal-mehndi-barat .blessing-rule::after { width:min(20vw,7rem); height:1px; content:""; background:linear-gradient(90deg,transparent,#b58a4f); }
+#invitation.mughal-mehndi-barat .blessing-rule::after { transform:rotate(180deg); }
+#invitation.mughal-mehndi-barat .blessing-intro { max-width:32rem; margin:.7rem auto 0; color:rgba(58,42,32,.72); font-size:1.05rem; font-style:italic; line-height:1.65; }
+#invitation.mughal-mehndi-barat .blessing-card .wp-heart-btn { margin-top:1.8rem; }
+#invitation.mughal-mehndi-barat .blessing-card .wp-heart-btn span:first-child { color:#9e2331; font-size:2.1rem; }
+#invitation.mughal-mehndi-barat .blessing-card .wp-count { position:relative; color:#6b432c; }
+
+@media(max-width:760px) {
+  #invitation.mughal-mehndi-barat .diya-layout,#invitation.mughal-mehndi-barat .dhol-layout { grid-template-columns:1fr; gap:1.5rem; }
+  #invitation.mughal-mehndi-barat .diya-section .section-heading,#invitation.mughal-mehndi-barat .dhol-section .section-heading { text-align:center; }
+  #invitation.mughal-mehndi-barat .diya-section .ornament,#invitation.mughal-mehndi-barat .dhol-section .ornament { margin-inline:auto; }
+  #invitation.mughal-mehndi-barat .diya-intro,#invitation.mughal-mehndi-barat .dhol-intro { margin-inline:auto; }
+  #invitation.mughal-mehndi-barat .dhol { height:12rem; }
+}
+@media(max-width:480px) {
+  #invitation.mughal-mehndi-barat .diya-display { padding:1.25rem .6rem; }
+  #invitation.mughal-mehndi-barat .diya-row { gap:.15rem; }
+  #invitation.mughal-mehndi-barat .dhol { padding:0 1.2rem; height:10rem; }
+  #invitation.mughal-mehndi-barat .dhol button { width:4.6rem; font-size:1rem; }
+}
+
+/* The two celebration cards: a pair of event keepsakes and a warm blessing panel. */
+#invitation.mughal-mehndi-barat .events-section {
+  position:relative;
+  overflow:hidden;
+  padding:clamp(5rem,9vw,8rem) 0;
+  background:radial-gradient(ellipse at 50% 0,rgba(171,90,55,.24),transparent 48%),linear-gradient(150deg,#200c12,#351019 55%,#1d0a10);
+}
+#invitation.mughal-mehndi-barat .events-section .section-heading { max-width:48rem; margin-bottom:2.7rem; }
+#invitation.mughal-mehndi-barat .events-section .eyebrow { color:#d8b875; }
+#invitation.mughal-mehndi-barat .events-section .section-heading h2 { color:#fff0dc; font-size:clamp(3rem,7vw,5.2rem); }
+#invitation.mughal-mehndi-barat .events-section .ornament { color:#d6b46f; }
+#invitation.mughal-mehndi-barat .event-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(1rem,3vw,2rem); width:min(100%,70rem); max-width:none; }
+#invitation.mughal-mehndi-barat .event-list article { min-height:21rem; padding:4.3rem clamp(1rem,3vw,2rem) 2rem; border:1px solid rgba(201,163,90,.58); background:radial-gradient(ellipse at 50% 0,rgba(201,163,90,.14),transparent 48%),linear-gradient(145deg,#f8eddb,#edddc4); color:#4b241f; box-shadow:0 25px 60px rgba(0,0,0,.25),inset 0 0 0 6px rgba(255,255,255,.3); }
+#invitation.mughal-mehndi-barat .event-list article::before { inset:.55rem; border-color:rgba(135,89,46,.26); }
+#invitation.mughal-mehndi-barat .event-list article::after { position:absolute; top:1.55rem; left:0; right:0; z-index:1; color:#9a7440; content:"01  ·  MEHNDI NIGHT"; font-family:var(--font-body); font-size:.58rem; letter-spacing:.2em; }
+#invitation.mughal-mehndi-barat .event-list article:nth-child(2)::after { content:"02  ·  THE BARAT"; }
+#invitation.mughal-mehndi-barat .event-list h3 { margin:0 0 1rem; color:#4b241f; font-size:clamp(3rem,6vw,4.7rem); }
+#invitation.mughal-mehndi-barat .event-list p { max-width:28rem; margin:0 auto .7rem; color:#77563d; font-size:.72rem; line-height:1.8; }
+#invitation.mughal-mehndi-barat .event-list small { color:#67462f; }
+#invitation.mughal-mehndi-barat .event-list .event-actions { position:relative; z-index:2; }
+#invitation.mughal-mehndi-barat .event-list .event-btn { border-color:#9b7440; color:#573523; }
+#invitation.mughal-mehndi-barat .event-list .event-btn:hover { background:#9b7440; color:#fff8ea; }
+
+#invitation.mughal-mehndi-barat .blessing-section {
+  padding:clamp(5rem,10vw,9rem) 1.25rem;
+  background:radial-gradient(ellipse at 50% 0,rgba(217,174,98,.16),transparent 50%),linear-gradient(180deg,#f1e4cf,#fbf4e8 48%,#ead9bd);
+}
+#invitation.mughal-mehndi-barat .blessing-card { width:min(100%,64rem); padding:clamp(3.5rem,7vw,6rem) 1.5rem; border-color:rgba(201,163,90,.62); background:radial-gradient(ellipse at 50% 30%,rgba(121,38,39,.48),transparent 58%),linear-gradient(145deg,#241014,#49151c 55%,#250d13); box-shadow:inset 0 0 0 7px rgba(255,255,255,.035),0 35px 85px rgba(49,23,14,.24); }
+#invitation.mughal-mehndi-barat .blessing-card::before { inset:1rem; border-color:rgba(222,187,120,.35); }
+#invitation.mughal-mehndi-barat .blessing-card .eyebrow { color:#d8b875; }
+#invitation.mughal-mehndi-barat .blessing-card h2 { max-width:22ch; color:#fff0dc; }
+#invitation.mughal-mehndi-barat .blessing-rule { color:#e0bd78; }
+#invitation.mughal-mehndi-barat .blessing-rule::before,#invitation.mughal-mehndi-barat .blessing-rule::after { background:linear-gradient(90deg,transparent,#e0bd78); }
+#invitation.mughal-mehndi-barat .blessing-intro { color:rgba(255,240,220,.78); }
+#invitation.mughal-mehndi-barat .blessing-card .wp-heart-btn { border-color:#dfbd7d; background:radial-gradient(circle at 50% 32%,rgba(255,240,220,.18),transparent 72%); box-shadow:0 0 0 .55rem rgba(223,189,125,.08),0 12px 34px rgba(0,0,0,.28); }
+#invitation.mughal-mehndi-barat .blessing-card .wp-heart-btn span { color:#fff0dc; }
+#invitation.mughal-mehndi-barat .blessing-card .wp-heart-btn span:first-child { color:#f3c17e; }
+#invitation.mughal-mehndi-barat .blessing-card .wp-count { color:#f1d5a7; }
+@media(max-width:620px) {
+  #invitation.mughal-mehndi-barat .event-list { grid-template-columns:1fr; width:min(100%,30rem); }
+  #invitation.mughal-mehndi-barat .event-list article { min-height:18rem; }
+  #invitation.mughal-mehndi-barat .blessing-card { padding-inline:1rem; }
+}

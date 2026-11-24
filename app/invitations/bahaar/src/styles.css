@@ -562,3 +562,99 @@ font: inherit; font-size: 10px; font-weight: 700; letter-spacing: .13em; text-tr
 .bahaar-root .event-card__cal:hover { background: var(--rose); color: #fff; }
 .bahaar-root { --wc-bg: #fbf7ef; --wc-ink: #344138; --wc-accent: #b7777f; --wc-line: rgba(67,90,72,.18); --wc-font: "Manrope", Arial, sans-serif;
 --wf-ink: #435a48; --wf-line: rgba(67,90,72,.2); --wf-bg: var(--paper); --wf-font: "Cormorant Garamond", Georgia, serif; }
+/* Restored section-specific layouts used by the current invitation markup. */
+.bahaar-root .timeline__content { padding: 4px 0 28px; }
+.bahaar-root .timeline__content time { display: inline-block; margin-bottom: 6px; }
+.bahaar-root .timeline__content h3 { margin: 0; color: var(--sage-deep); }
+.bahaar-root .timeline__content p { margin: 4px 0 0; color: var(--muted); }
+.bahaar-root .venue-section { padding: 0; background: var(--sage-deep); }
+.bahaar-root .venue-card { min-height: clamp(620px, 82vh, 900px); }
+.bahaar-root .venue-card__content { padding: 60px 30px; }
+.bahaar-root .venue-card .section-kicker { color: #ecd6ac; }
+.bahaar-root .venue-card h2 { max-width: 740px; margin: 0 auto; color: var(--cream); font-size: clamp(38px, 7vw, 74px); }
+.bahaar-root .venue-card__ornament { display: block; margin: 23px auto 0; color: var(--champagne); font-size: 25px; }
+.bahaar-root .venue-card h3 { margin: 10px 0 15px; }
+.bahaar-root .venue-card address { font-family: var(--font-display); font-size: clamp(17px, 2.4vw, 22px); line-height: 1.6; }
+.bahaar-root .venue-card .button { margin-top: 32px; }
+.bahaar-root .venue-card__leaves i { animation: venue-leaf-drift 8s ease-in-out infinite alternate; }
+.bahaar-root .venue-card__leaves i:nth-child(even) { animation-delay: -4s; }
+@keyframes venue-leaf-drift { to { translate: 0 -14px; rotate: 8deg; opacity: .55; } }
+.bahaar-root .dress-section { background: radial-gradient(ellipse at 50% 18%, #fffdf7 0%, var(--cream) 72%); }
+.bahaar-root .dress-section .section__inner { max-width: 840px; padding: clamp(34px, 6vw, 70px); border: 1px solid rgba(201,177,126,.48); border-radius: 46% 46% 22px 22px / 12% 12% 22px 22px; background: rgba(255,253,247,.72); box-shadow: 0 28px 70px rgba(67,90,72,.09); }
+.bahaar-root .dress-section h2 { margin-bottom: 22px; }
+.bahaar-root .dress-section h3 { margin: 0 0 12px; }
+.bahaar-root .dress-section .section__inner > p:not(.section-kicker) { max-width: 620px; margin: 0 auto; color: var(--muted); font-family: var(--font-display); font-size: clamp(17px, 2.3vw, 21px); line-height: 1.65; }
+.bahaar-root .event-grid { align-items: stretch; }
+.bahaar-root .event-card { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: clamp(38px, 5vw, 56px) clamp(22px, 4vw, 38px); }
+.bahaar-root .event-card__flower { display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid rgba(201,177,126,.6); border-radius: 50%; color: var(--rose); font-size: 22px; }
+.bahaar-root .event-card h3 { margin: 16px 0 7px; color: var(--sage-deep); }
+.bahaar-root .event-card p { max-width: 420px; margin: 5px 0; color: var(--muted); font-family: var(--font-display); font-size: 17px; line-height: 1.5; }
+.bahaar-root .event-card p.event-card__date { margin-top: 3px; color: var(--rose); font-family: var(--font-body); font-size: 10px; }
+.bahaar-root .event-card__actions { margin-top: auto; padding-top: 18px; }
+.bahaar-root .closing { isolation: isolate; }
+.bahaar-root .closing__content { max-width: 790px; padding: 0 20px; }
+.bahaar-root .closing__content > p:not(.section-kicker) { max-width: 650px; margin-inline: auto; }
+.bahaar-root .closing .section-kicker { color: var(--rose); }
+.bahaar-root .closing__content > a { display: inline-flex; margin-top: 40px; padding: 12px 20px; border: 1px solid rgba(67,90,72,.3); border-radius: 999px; color: var(--sage-deep); font-size: 10px; letter-spacing: .15em; text-decoration: none; text-transform: uppercase; }
+.bahaar-root .closing__content > a:hover { background: var(--sage-deep); color: var(--cream); }
+@media (max-width: 700px) {
+  .bahaar-root .venue-card { min-height: 680px; }
+  .bahaar-root .venue-card__content { padding: 70px 22px; }
+  .bahaar-root .venue-card__leaves i { scale: .72; }
+  .bahaar-root .dress-section .section__inner { border-radius: 28% 28% 18px 18px / 8% 8% 18px 18px; padding: 42px 22px; }
+  .bahaar-root .event-grid { gap: 18px; }
+  .bahaar-root .event-card { min-height: 0; }
+  .bahaar-root .closing__botanical { width: min(150vw, 650px); height: min(150vw, 650px); }
+}
+
+/* Save the Date: editorial layout with a framed scratch reveal. */
+.bahaar-root .date-reveal { min-height: 0; display: block; padding: clamp(90px, 12vw, 150px) 24px; overflow: hidden; background: radial-gradient(ellipse at 75% 50%, rgba(215,170,167,.17), transparent 42%), var(--sage-deep); }
+.bahaar-root .date-reveal::before { opacity: .055; background-size: 38px 38px; }
+.bahaar-root .save-date-layout { width: min(1120px,100%); min-height: 560px; display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: clamp(42px,8vw,110px); text-align: left; }
+.bahaar-root .save-date-copy { position: relative; z-index: 2; max-width: 430px; }
+.bahaar-root .save-date-seal { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 28px; border: 1px solid rgba(233,201,198,.55); border-radius: 50%; color: #e9c9c6; font-size: 21px; }
+.bahaar-root .date-reveal .save-date-copy .section-kicker { margin-bottom: 18px; color: #e9c9c6; }
+.bahaar-root .save-date-copy h2 { color: var(--cream); font-size: clamp(58px,8vw,96px); line-height: .86; letter-spacing: -.045em; }
+.bahaar-root .save-date-rule { display: flex; align-items: center; gap: 10px; width: 150px; margin: 28px 0 22px; color: var(--champagne); }
+.bahaar-root .save-date-rule::before,.bahaar-root .save-date-rule::after { content: ""; height: 1px; flex: 1; background: rgba(201,177,126,.62); }
+.bahaar-root .save-date-rule i { width: 6px; height: 6px; border: 1px solid var(--champagne); transform: rotate(45deg); }
+.bahaar-root .save-date-message { max-width: 365px; margin: 0; color: rgba(251,247,239,.78); font-family: var(--font-display); font-size: clamp(19px,2.5vw,24px); line-height: 1.55; }
+.bahaar-root .save-date-note { display: flex; align-items: center; gap: 15px; margin-top: 34px; padding-top: 18px; border-top: 1px solid rgba(251,247,239,.2); color: #e9c9c6; }
+.bahaar-root .save-date-note>span { font-family: var(--font-display); font-size: 28px; color: var(--champagne); }
+.bahaar-root .save-date-note p { margin: 0; font-size: 10px; line-height: 1.6; letter-spacing: .13em; text-transform: uppercase; }
+.bahaar-root .save-date-note b { color: rgba(251,247,239,.65); font-weight: 500; }
+.bahaar-root .save-date-card-shell { position: relative; z-index: 2; width: min(100%, 650px); justify-self: end; padding: clamp(20px,3.4vw,40px); border: 1px solid rgba(201,177,126,.54); background: linear-gradient(145deg,rgba(251,247,239,.1),rgba(251,247,239,.035)); box-shadow: 0 38px 90px rgba(25,39,30,.25); }
+.bahaar-root .save-date-card-shell::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(251,247,239,.14); pointer-events: none; }
+.bahaar-root .save-date-card-heading { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; margin: 0 4px 18px; color: rgba(251,247,239,.75); font-size: 9px; letter-spacing: .19em; }
+.bahaar-root .save-date-card-heading i { color: var(--champagne); font-style: normal; font-size: 15px; }
+.bahaar-root .date-reveal .bli-scratch-wrap { position: relative; z-index: 1; width: 100%; max-width: none; margin: 0; padding: 0; }
+.bahaar-root .date-reveal .bli-scratch { aspect-ratio: 1.58; border: 1px solid rgba(201,177,126,.75); border-radius: 3px; background: radial-gradient(ellipse at 50% 0%,#fffdf8,#f3eadf 78%); box-shadow: inset 0 0 0 8px rgba(201,177,126,.08), 0 18px 44px rgba(18,31,24,.24); }
+.bahaar-root .date-reveal .bli-scratch::before { content: ""; position: absolute; inset: 16px; border: 1px solid rgba(183,119,127,.3); pointer-events: none; }
+.bahaar-root .date-reveal .bli-scratch-kicker { position: relative; z-index: 1; font-size: clamp(9px,1.1vw,12px); color: var(--rose); }
+.bahaar-root .date-reveal .bli-scratch-date { position: relative; z-index: 1; margin-top: 12px; font-size: clamp(42px,6vw,68px); color: var(--sage-deep); }
+.bahaar-root .date-reveal .bli-scratch-day { position: relative; z-index: 1; margin-top: 4px; font-size: clamp(17px,2vw,23px); }
+.bahaar-root .date-reveal .bli-scratch-time { position: relative; z-index: 1; margin-top: 12px; font-size: 10px; letter-spacing: .2em; }
+.bahaar-root .date-reveal .bli-scratch-button { right: 50%; bottom: 18px; transform: translateX(50%); padding: 9px 15px; border: 1px solid rgba(183,119,127,.35); background: rgba(251,247,239,.94); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 6px 18px rgba(70,55,30,.1); }
+.bahaar-root .date-reveal .bli-scratch canvas { z-index: 2; }
+.bahaar-root .date-reveal .gesture-hint { position: relative; z-index: 1; margin: 17px 0 20px; color: rgba(251,247,239,.72); text-align: center; font-family: var(--font-display); font-size: 17px; font-style: italic; letter-spacing: 0; }
+.bahaar-root .date-reveal .gesture-hint span { margin-right: 7px; color: var(--champagne); }
+.bahaar-root .date-reveal .event-card__cal { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; padding: 12px 20px; border-color: rgba(251,247,239,.4); color: var(--cream); }
+.bahaar-root .date-reveal .event-card__cal:hover { background: var(--cream); color: var(--sage-deep); }
+.bahaar-root .save-date-orbit { position: absolute; right: -25px; top: 42px; display: grid; place-content: center; width: 72px; height: 72px; border: 1px solid rgba(201,177,126,.55); border-radius: 50%; color: rgba(251,247,239,.85); font-family: var(--font-display); font-size: 17px; text-align: center; transform: rotate(12deg); }
+.bahaar-root .save-date-orbit i { color: var(--champagne); font-size: 10px; font-style: normal; }
+@media (max-width: 760px) {
+  .bahaar-root .date-reveal { padding: 82px 20px; }
+  .bahaar-root .save-date-layout { min-height: 0; grid-template-columns: 1fr; gap: 35px; }
+  .bahaar-root .save-date-copy { max-width: 520px; margin: auto; text-align: center; }
+  .bahaar-root .save-date-seal { margin: 0 auto 20px; }
+  .bahaar-root .save-date-copy h2 br { display: none; }
+  .bahaar-root .save-date-copy h2 { font-size: clamp(52px,14vw,76px); }
+  .bahaar-root .save-date-rule { margin: 22px auto 18px; }
+  .bahaar-root .save-date-message { margin: auto; font-size: 19px; }
+  .bahaar-root .save-date-note { justify-content: center; margin: 22px auto 0; max-width: 320px; }
+  .bahaar-root .save-date-card-shell { width: 100%; justify-self: center; padding: 22px 16px; }
+  .bahaar-root .date-reveal .bli-scratch { aspect-ratio: 1.2; }
+  .bahaar-root .date-reveal .bli-scratch-date { font-size: clamp(36px,10vw,54px); }
+  .bahaar-root .date-reveal .bli-scratch-time { font-size: 8px; }
+  .bahaar-root .save-date-orbit { right: 4px; top: 8px; width: 48px; height: 48px; font-size: 12px; opacity: .75; }
+}

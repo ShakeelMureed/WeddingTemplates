@@ -241,13 +241,12 @@ box-shadow: 0 30px 60px -36px rgba(29,21,52,.7), inset 0 0 0 1px rgba(200,162,21
 .wisteria-root .contact { margin: .9rem 0 0; }
 .wisteria-root .contact b { display: block; font-weight: 600; } .wisteria-root .contact span { color: var(--plum-soft); letter-spacing: .06em; }
 .wisteria-root .contact .row { display: flex; gap: .5rem; justify-content: center; margin-top: .4rem; }
-.wisteria-root .night { position: relative; height: 175svh; background: var(--night); }
-.wisteria-root .night .stick { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.wisteria-root .night { position: relative; background: var(--night); }
+.wisteria-root .night .stick { position: sticky; top: 0; height: 85svh; overflow: hidden; }
 .wisteria-root .night .layer { position: absolute; left: 0; right: 0; will-change: transform, opacity; transform: translateZ(0); backface-visibility: hidden; pointer-events: none; }
 .wisteria-root .night .stick { contain: paint; }
 .wisteria-root .night .back { inset: -6% 0; background: #3b2a66 center / cover; }
 .wisteria-root .night.near .back { background-image: url(../img/night-back.webp); }
-.wisteria-root .night .mid { bottom: -4%; left: 24%; right: 24%; }
 .wisteria-root .night .front { inset: -2% -6% auto; }
 .wisteria-root .night .front img, .wisteria-root .night .mid img { width: 100%; }
 .wisteria-root .night .fade { position: absolute; inset: auto 0 0; height: 30%; background: linear-gradient(transparent, rgba(29,21,52,.85)); pointer-events: none; }

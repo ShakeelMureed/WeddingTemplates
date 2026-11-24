@@ -1,22 +1,140 @@
 'use client';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import './style.css';
 
-const photo='https://images.unsplash.com/photo-1762926628297-bbb137ed9968?auto=format&fit=crop&w=2200&q=85';
-const events=[['Mehndi','Wednesday · 24 March 2027','5:00 PM · The Garden'],['Nikkah','Thursday · 25 March 2027','6:00 PM · The White Pavilion'],['Walima','Friday · 26 March 2027','7:30 PM · The Garden']];
-export default function RoshniInvitation(){
- const[open,setOpen]=useState(false),[opening,setOpening]=useState(false),[names,setNames]=useState({guest:'Dear family and friends',bride:'Fatima',groom:'Ali'}),[time,setTime]=useState([0,0,0,0]),[lights,setLights]=useState([]),[sent,setSent]=useState(false);
- useEffect(()=>{const q=new URLSearchParams(location.search);setNames({guest:q.get('guest')?.trim()||'Dear family and friends',bride:q.get('bride')?.trim()||'Fatima',groom:q.get('groom')?.trim()||'Ali'});const tick=()=>{const d=Math.max(0,new Date('2027-03-25T18:00:00+05:00').getTime()-Date.now());setTime([Math.floor(d/86400000),Math.floor(d/3600000)%24,Math.floor(d/60000)%60,Math.floor(d/1000)%60])};tick();const t=setInterval(tick,1000);return()=>clearInterval(t)},[]);
- useEffect(()=>{const items=document.querySelectorAll('.roshni .reveal-on-scroll');if(!('IntersectionObserver'in window)){items.forEach(el=>el.classList.add('is-visible'));return}const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.12});items.forEach(el=>observer.observe(el));return()=>observer.disconnect()},[]);
- const toggle=i=>setLights(v=>v.includes(i)?v.filter(x=>x!==i):[...v,i]);const submit=e=>{e.preventDefault();const f=new FormData(e.currentTarget),d=Object.fromEntries(f);d.events=f.getAll('events');try{localStorage.setItem('roshni-rsvp',JSON.stringify(d))}catch{}setSent(true)};
- return <main className="roshni">
- {!open&&<button className={`roshni-cover ${opening?'is-opening':''}`} onClick={()=>{if(opening)return;setOpening(true);setTimeout(()=>setOpen(true),1450)}} aria-label="Part the curtain and open invitation"><span className="roshni-cover-image" style={{backgroundImage:`linear-gradient(180deg,rgba(19,29,29,.15),rgba(19,29,29,.78)),url(${photo})`}}/><video suppressHydrationWarning className="roshni-cover-video" src="https://videos.pexels.com/video-files/34576221/34576221-hd_1920_1080_60fps.mp4" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"/><span className="roshni-curtain left"/><span className="roshni-curtain right"/><small>A NIGHT TO REMEMBER</small><strong>{names.groom}<i>&amp;</i>{names.bride}</strong><em>{names.guest}</em><b>PART THE LIGHTS <span>↓</span></b></button>}
- <header className="roshni-hero" style={{backgroundImage:`linear-gradient(180deg,rgba(23,38,39,.2),rgba(23,38,39,.7)),url(${photo})`}}><video suppressHydrationWarning className="roshni-hero-video" src="https://videos.pexels.com/video-files/34576221/34576221-hd_1920_1080_60fps.mp4" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"/><nav><span>R <i>✧</i> F</span><a href="#roshni-rsvp">KINDLY REPLY ↗</a></nav><div className="roshni-hero-copy"><small>UNDER A CANOPY OF LIGHT</small><p>{names.guest}</p><h1>{names.groom}<i>&amp;</i>{names.bride}</h1><em>with their families</em><div className="roshni-date"><span>25</span><i/> <span>MARCH 2027</span><i/><span>LAHORE</span></div><a href="#roshni-letter">COME INTO THE GARDEN ↓</a></div><div className="roshni-orbs" aria-hidden="true">{Array.from({length:14},(_,i)=><i key={i} style={{'--i':i}}/>)}</div></header>
- <section className="roshni-letter reveal-on-scroll" id="roshni-letter"><span className="roshni-star">✧</span><small>WITH JOY AND GRATITUDE</small><h2>A little note<br/>for our favourite people</h2><p>With our families, we invite you to share an evening of laughter, blessings and new beginnings as {names.groom} and {names.bride} begin their life together.</p><div className="roshni-families"><article><span>THE GROOM’S FAMILY</span><b>{names.groom}’s loved ones</b></article><i>✧</i><article><span>THE BRIDE’S FAMILY</span><b>{names.bride}’s loved ones</b></article></div></section>
- <section className="roshni-lawn reveal-on-scroll"><div className="roshni-lawn-photo" style={{backgroundImage:`url(${photo})`}}/><div><small>THE GARDEN · LAHORE</small><h2>Gather beneath<br/>the evening sky</h2><p>A garden aglow with warm lights, a table set for our favourite people, and a night we hope you’ll remember.</p><a href="https://maps.google.com/?q=garden+wedding+venue+Lahore" target="_blank" rel="noreferrer">GET DIRECTIONS ↗</a></div></section>
- <section className="roshni-count reveal-on-scroll"><small>THE WAIT IS ALMOST OVER</small><h2>Until we meet beneath the lights</h2><div>{time.map((n,i)=><article key={i}><b>{String(n).padStart(i?2:1,'0')}</b><span>{['DAYS','HOURS','MINUTES','SECONDS'][i]}</span></article>)}</div><p>25 · 03 · 2027</p></section>
- <section className="roshni-events reveal-on-scroll"><header><small>PLEASE JOIN US</small><h2>Three evenings<br/>to celebrate together</h2><p>Choose a gathering to see when and where.</p></header><div className="roshni-event-list">{events.map((e,i)=><article key={e[0]}><span className="roshni-number">0{i+1}</span><span className="roshni-bulb">✦</span><div><small>{e[1]}</small><h3>{e[0]}</h3><p>{e[2]}</p></div><a href={`https://maps.google.com/?q=${encodeURIComponent(e[2]+' Lahore')}`} target="_blank" rel="noreferrer">MAP ↗</a></article>)}</div></section>
- <section className="roshni-rsvp reveal-on-scroll" id="roshni-rsvp"><div><small>LET US KNOW</small><h2>Will you be<br/>under the lights?</h2><p>Pick the evenings you can join. We’ll keep a place for you.</p><div className="roshni-lantern-row">{Array.from({length:7},(_,i)=><button type="button" key={i} onClick={()=>toggle(i)} className={lights.includes(i)?'lit':''} aria-label={lights.includes(i)?'Turn off a garden light':'Turn on a garden light'}>✧</button>)}</div><small>{lights.length?`${lights.length} little light${lights.length>1?'s':''} for the celebration`:'Touch a light to add a little glow'}</small></div>{sent?<div className="roshni-thanks"><i>✧</i><h3>Thank you</h3><p>Your reply has been saved in this preview.</p></div>:<form onSubmit={submit}><label>Your name<input name="name" required placeholder="Name"/></label><label>Your response<select name="attendance" required defaultValue=""><option value="" disabled>Choose one</option><option>Joyfully accepts</option><option>Regretfully declines</option></select></label><fieldset><legend>Which evenings?</legend>{events.map(e=><label key={e[0]}><input type="checkbox" name="events" value={e[0]}/><span>{e[0]}</span><i>✧</i></label>)}</fieldset><label>A note for the couple<textarea name="message" rows="2" placeholder="Optional"/></label><button className="roshni-submit" type="submit">SEND YOUR REPLY <b>↗</b></button><small className="roshni-note">Preview only · Reply stays in this browser</small></form>}</section>
- <footer className="roshni-footer"><span>A NIGHT UNDER A THOUSAND LIGHTS</span><strong>{names.groom} <i>&amp;</i> {names.bride}</strong><small>25 MARCH 2027 · LAHORE</small><a href="https://www.pexels.com/video/warm-outdoor-string-lights-amid-foliage-at-night-34576221/" target="_blank" rel="noreferrer">GARDEN LIGHT VIDEO · YETKIN AĞAÇ / PEXELS</a><a href="https://unsplash.com/photos/courtyard-with-arches-columns-and-blooming-flowers-aHgR4NTWHCA" target="_blank" rel="noreferrer">COURTYARD PHOTOGRAPH · SHAWN KIM / UNSPLASH</a></footer>
- </main>;
+const photo = 'https://images.unsplash.com/photo-1762926628297-bbb137ed9968?auto=format&fit=crop&w=2200&q=85';
+const events = [['Mehndi', 'Wednesday · 24 March 2027', '5:00 PM · The Garden'], ['Nikkah', 'Thursday · 25 March 2027', '6:00 PM · The White Pavilion'], ['Walima', 'Friday · 26 March 2027', '7:30 PM · The Garden']];
+export default function RoshniInvitation() {
+    const [open, setOpen] = useState(false), [opening, setOpening] = useState(false), [names, setNames] = useState({
+        guest: 'Dear family and friends',
+        bride: 'Fatima',
+        groom: 'Ali'
+    }), [time, setTime] = useState([0, 0, 0, 0]), [lights, setLights] = useState([]), [sent, setSent] = useState(false);
+    useEffect(() => {
+        const q = new URLSearchParams(location.search);
+        setNames({
+            guest: q.get('guest')?.trim() || 'Dear family and friends',
+            bride: q.get('bride')?.trim() || 'Fatima',
+            groom: q.get('groom')?.trim() || 'Ali'
+        });
+        const tick = () => {
+            const d = Math.max(0, new Date('2027-03-25T18:00:00+05:00').getTime() - Date.now());
+            setTime([Math.floor(d / 86400000), Math.floor(d / 3600000) % 24, Math.floor(d / 60000) % 60, Math.floor(d / 1000) % 60])
+        };
+        tick();
+        const t = setInterval(tick, 1000);
+        return () => clearInterval(t)
+    }, []);
+    useEffect(() => {
+        const items = document.querySelectorAll('.roshni .reveal-on-scroll');
+        if (!('IntersectionObserver' in window)) {
+            items.forEach(el => el.classList.add('is-visible'));
+            return
+        }
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target)
+            }
+        }), {threshold: .12});
+        items.forEach(el => observer.observe(el));
+        return () => observer.disconnect()
+    }, []);
+    const toggle = i => setLights(v => v.includes(i) ? v.filter(x => x !== i) : [...v, i]);
+    const submit = e => {
+        e.preventDefault();
+        const f = new FormData(e.currentTarget), d = Object.fromEntries(f);
+        d.events = f.getAll('events');
+        try {
+            localStorage.setItem('roshni-rsvp', JSON.stringify(d))
+        } catch {
+        }
+        setSent(true)
+    };
+    return <main className="roshni">
+        {!open && <button className={`roshni-cover ${opening ? 'is-opening' : ''}`} onClick={() => {
+            if (opening) return;
+            setOpening(true);
+            setTimeout(() => setOpen(true), 1450)
+        }} aria-label="Part the curtain and open invitation"><span className="roshni-cover-image"
+                                                                   style={{backgroundImage: `linear-gradient(180deg,rgba(19,29,29,.15),rgba(19,29,29,.78)),url(${photo})`}}/>
+            <video suppressHydrationWarning className="roshni-cover-video"
+                   src="https://videos.pexels.com/video-files/34576221/34576221-hd_1920_1080_60fps.mp4" autoPlay muted
+                   loop playsInline preload="metadata" aria-hidden="true"/>
+            <span className="roshni-curtain left"/><span className="roshni-curtain right"/><small>A NIGHT TO
+                REMEMBER</small><strong>{names.groom}<i>&amp;</i>{names.bride}</strong><em>{names.guest}</em><b>PART THE
+                LIGHTS <span>↓</span></b></button>}
+        <header className="roshni-hero"
+                style={{backgroundImage: `linear-gradient(180deg,rgba(23,38,39,.2),rgba(23,38,39,.7)),url(${photo})`}}>
+            <video suppressHydrationWarning className="roshni-hero-video"
+                   src="https://videos.pexels.com/video-files/34576221/34576221-hd_1920_1080_60fps.mp4" autoPlay muted
+                   loop playsInline preload="metadata" aria-hidden="true"/>
+            <nav><span>R <i>✧</i> F</span><a href="#roshni-rsvp">KINDLY REPLY ↗</a></nav>
+            <div className="roshni-hero-copy"><small>UNDER A CANOPY OF LIGHT</small><p>{names.guest}</p>
+                <h1>{names.groom}<i>&amp;</i>{names.bride}</h1><em>with their families</em>
+                <div className="roshni-date"><span>25</span><i/> <span>MARCH 2027</span><i/><span>LAHORE</span></div>
+                <a href="#roshni-letter">COME INTO THE GARDEN ↓</a></div>
+            <div className="roshni-orbs" aria-hidden="true">{Array.from({length: 14}, (_, i) => <i key={i}
+                                                                                                   style={{'--i': i}}/>)}</div>
+        </header>
+        <section className="roshni-letter reveal-on-scroll" id="roshni-letter"><span
+            className="roshni-star">✧</span><small>WITH JOY AND GRATITUDE</small><h2>A little note<br/>for our favourite
+            people</h2><p>With our families, we invite you to share an evening of laughter, blessings and new beginnings
+            as {names.groom} and {names.bride} begin their life together.</p>
+            <div className="roshni-families">
+                <article><span>THE GROOM’S FAMILY</span><b>{names.groom}’s loved ones</b></article>
+                <i>✧</i>
+                <article><span>THE BRIDE’S FAMILY</span><b>{names.bride}’s loved ones</b></article>
+            </div>
+        </section>
+        <section className="roshni-lawn reveal-on-scroll">
+            <div className="roshni-lawn-photo" style={{backgroundImage: `url(${photo})`}}/>
+            <div><small>THE GARDEN · LAHORE</small><h2>Gather beneath<br/>the evening sky</h2><p>A garden aglow with
+                warm lights, a table set for our favourite people, and a night we hope you’ll remember.</p><a
+                href="https://maps.google.com/?q=garden+wedding+venue+Lahore" target="_blank" rel="noreferrer">GET
+                DIRECTIONS ↗</a></div>
+        </section>
+        <section className="roshni-count reveal-on-scroll"><small>THE WAIT IS ALMOST OVER</small><h2>Until we meet
+            beneath the lights</h2>
+            <div>{time.map((n, i) => <article key={i}>
+                <b>{String(n).padStart(i ? 2 : 1, '0')}</b><span>{['DAYS', 'HOURS', 'MINUTES', 'SECONDS'][i]}</span>
+            </article>)}</div>
+            <p>25 · 03 · 2027</p></section>
+        <section className="roshni-events reveal-on-scroll">
+            <header><small>PLEASE JOIN US</small><h2>Three evenings<br/>to celebrate together</h2><p>Choose a gathering
+                to see when and where.</p></header>
+            <div className="roshni-event-list">{events.map((e, i) => <article key={e[0]}><span
+                className="roshni-number">0{i + 1}</span><span className="roshni-bulb">✦</span>
+                <div><small>{e[1]}</small><h3>{e[0]}</h3><p>{e[2]}</p></div>
+                <a href={`https://maps.google.com/?q=${encodeURIComponent(e[2] + ' Lahore')}`} target="_blank"
+                   rel="noreferrer">MAP ↗</a></article>)}</div>
+        </section>
+        <section className="roshni-rsvp reveal-on-scroll" id="roshni-rsvp">
+            <div><small>LET US KNOW</small><h2>Will you be<br/>under the lights?</h2><p>Pick the evenings you can join.
+                We’ll keep a place for you.</p>
+                <div className="roshni-lantern-row">{Array.from({length: 7}, (_, i) => <button type="button" key={i}
+                                                                                               onClick={() => toggle(i)}
+                                                                                               className={lights.includes(i) ? 'lit' : ''}
+                                                                                               aria-label={lights.includes(i) ? 'Turn off a garden light' : 'Turn on a garden light'}>✧</button>)}</div>
+                <small>{lights.length ? `${lights.length} little light${lights.length > 1 ? 's' : ''} for the celebration` : 'Touch a light to add a little glow'}</small>
+            </div>
+            {sent ? <div className="roshni-thanks"><i>✧</i><h3>Thank you</h3><p>Your reply has been saved in this
+                    preview.</p></div> :
+                <form onSubmit={submit}><label>Your name<input name="name" required placeholder="Name"/></label><label>Your
+                    response<select name="attendance" required defaultValue="">
+                        <option value="" disabled>Choose one</option>
+                        <option>Joyfully accepts</option>
+                        <option>Regretfully declines</option>
+                    </select></label>
+                    <fieldset>
+                        <legend>Which evenings?</legend>
+                        {events.map(e => <label key={e[0]}><input type="checkbox" name="events"
+                                                                  value={e[0]}/><span>{e[0]}</span><i>✧</i></label>)}
+                    </fieldset>
+                    <label>A note for the couple<textarea name="message" rows="2" placeholder="Optional"/></label>
+                    <button className="roshni-submit" type="submit">SEND YOUR REPLY <b>↗</b></button>
+                    <small className="roshni-note">Preview only · Reply stays in this browser</small></form>}</section>
+        <footer className="roshni-footer"><span>A NIGHT UNDER A THOUSAND LIGHTS</span><strong>{names.groom}
+            <i>&amp;</i> {names.bride}</strong><small>25 MARCH 2027 · LAHORE</small></footer>
+    </main>;
 }
