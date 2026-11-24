@@ -1,0 +1,5 @@
+@font-face{font-family:citadelScript;src:url(../media/CitadelScript-s.p.3fp34rv5a1ae2.woff2)format("woff2");font-display:swap;font-weight:400}
+@font-face{font-family:freeSerif;src:url(../media/FreeSerif_Latin-s.p.3u6e97oy0yxjp.woff2)format("woff2");font-display:swap;font-weight:400}
+@font-face{font-family:playfairDisplay;src:url(../media/PlayfairDisplay_Variable-s.p.3dohbala2vih2.woff2)format("woff2");font-display:swap;font-weight:400 900}
+@font-face{font-family:cormorant;src:url(../media/CormorantGaramond_Regular-s.p.363csnitlu50n.woff2)format("woff2");font-display:swap;font-weight:400}
+.swan-root{--ff-citadel:"citadelScript", cursive;--ff-free-serif:"freeSerif", "Times New Roman", serif;--ff-playfair:"playfairDisplay", Georgia, serif;--ff-cormorant:"cormorant", Georgia, serif}

@@ -1,0 +1,40 @@
+.mithril-root,.mithril-root { margin: 0; background: #fff; }
+.mithril-root img,.mithril-root  video { display: block; }
+@keyframes mithril-t047-pill-shimmer { 0% { background-position: 150% 0; } 60%, 100% { background-position: -150% 0; } }
+.mithril-root .t047-pill-shimmer { animation: mithril-t047-pill-shimmer 3s linear infinite; }
+.mithril-root [data-v] { transition-delay: var(--vd, 0s); }
+.mithril-root [data-v="P"] { opacity: 0; transform: translateY(28px); filter: blur(6px); transition: opacity 1.05s cubic-bezier(.22,1,.36,1), transform 1.05s cubic-bezier(.22,1,.36,1), filter 1.05s cubic-bezier(.22,1,.36,1); }
+.mithril-root [data-v="E"] { opacity: 0; transform: translateY(16px); transition: opacity .85s cubic-bezier(.22,1,.36,1), transform .85s cubic-bezier(.22,1,.36,1); }
+.mithril-root [data-v="M"] { opacity: 0; transition: opacity 1.2s cubic-bezier(.22,1,.36,1); }
+.mithril-root [data-v="V"] { opacity: 0; transform: scaleX(.35); transition: opacity .8s cubic-bezier(.22,1,.36,1), transform 1.3s cubic-bezier(.16,1,.3,1); }
+.mithril-root [data-v="F"] { opacity: 0; transform: translateY(26px) scale(1.04); filter: blur(6px); transition: opacity 1.35s cubic-bezier(.16,1,.3,1), transform 1.35s cubic-bezier(.16,1,.3,1), filter 1.35s cubic-bezier(.16,1,.3,1); }
+.mithril-root [data-v="Z"] { opacity: 0; transform: scale(1.12); transition: opacity 1.8s cubic-bezier(.16,1,.3,1), transform 1.8s cubic-bezier(.16,1,.3,1); }
+.mithril-root [data-v="H"] { opacity: 0; transform: translateY(-20px); transition: opacity 1.1s cubic-bezier(.16,1,.3,1), transform 1.1s cubic-bezier(.16,1,.3,1); }
+.mithril-root [data-v="R"] { opacity: 0; transform: scale(.5) translateY(8px); transition: opacity .35s ease-out, transform .6s cubic-bezier(.34,1.56,.64,1); }
+.mithril-root [data-v="O"] { opacity: 0; transform: scale(.9); transition: opacity 1.2s cubic-bezier(.16,1,.3,1), transform 1.2s cubic-bezier(.16,1,.3,1); }
+.mithril-root [data-v].in { opacity: 1; transform: none; filter: none; }
+.mithril-root [data-v].in,.mithril-root  [data-v] { transition-delay: var(--vd, 0s); }
+.mithril-root [data-hero] { opacity: 0; transform: translateY(26px); transition: opacity 1s cubic-bezier(.22,1,.36,1) var(--hd), transform 1s cubic-bezier(.22,1,.36,1) var(--hd); }
+.mithril-root [data-hero].in { opacity: 1; transform: none; }
+.mithril-root .vr-cover-names { animation: mithril-vr-rise 1.4s cubic-bezier(.22,1,.36,1) .55s both; }
+.mithril-root .vr-cover-hint { animation: mithril-vr-fade 1.2s ease 1.1s both; }
+@keyframes mithril-vr-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes mithril-vr-fade { from { opacity: 0; } to { opacity: 1; } }
+.mithril-root .vr-hero-mask { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 54%, rgba(0,0,0,.88) 70%, rgba(0,0,0,.55) 84%, rgba(0,0,0,.18) 94%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 54%, rgba(0,0,0,.88) 70%, rgba(0,0,0,.55) 84%, rgba(0,0,0,.18) 94%, rgba(0,0,0,0) 100%); }
+.mithril-root .vr-dress-img { margin-top: calc(-0.55 * min(100vw, 40rem)); }
+.mithril-root .vr-dress-mask { -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 7%, rgba(0,0,0,.85) 15%, #000 26%, #000 74%, rgba(0,0,0,.85) 85%, rgba(0,0,0,.35) 93%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 7%, rgba(0,0,0,.85) 15%, #000 26%, #000 74%, rgba(0,0,0,.85) 85%, rgba(0,0,0,.35) 93%, rgba(0,0,0,0) 100%); }
+.mithril-root .vr-closing-mask { -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.06) 8%, rgba(0,0,0,.18) 16%, rgba(0,0,0,.38) 26%, rgba(0,0,0,.62) 36%, rgba(0,0,0,.85) 46%, #000 58%, #000 92%, rgba(0,0,0,.7) 97%, rgba(0,0,0,.35) 100%); mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.06) 8%, rgba(0,0,0,.18) 16%, rgba(0,0,0,.38) 26%, rgba(0,0,0,.62) 36%, rgba(0,0,0,.85) 46%, #000 58%, #000 92%, rgba(0,0,0,.7) 97%, rgba(0,0,0,.35) 100%); }
+.mithril-root .vr-venue { filter: saturate(.75); }
+@media (prefers-reduced-motion: reduce) {
+.mithril-root [data-v],.mithril-root  [data-hero] { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+.mithril-root .t047-pill-shimmer,.mithril-root  .vr-cover-names,.mithril-root  .vr-cover-hint { animation: none; }
+}
+.mithril-root .vr-oneline { white-space: nowrap; font-size: min(1.45rem, 5.4vw); }
+.mithril-root .vr-scratch { aspect-ratio: 1.5; touch-action: none; user-select: none; -webkit-user-select: none; }
+.mithril-root { --wc-bg: #fffcf6; --wc-ink: #8a6a46; --wc-accent: #a2865c; --wc-line: #e4d5bf; --wc-font: "cormorant", Georgia, serif;
+--wf-bg: #eae3dc; --wf-ink: #8a6a46; --wf-line: rgba(201,175,142,.8); --wf-font: "cormorant", Georgia, serif; }
+.mithril-root #vrScratch { border-radius: 12px; background: #fdfaf4; box-shadow: inset 0 0 0 1px rgba(201,175,142,.35); }
+.mithril-root #vrScratch .font-pinyon { font-size: clamp(2rem, 8vw, 2.5rem); line-height: 1.2; }
+.mithril-root #vrScratch .italic { font-size: 1.05rem; }
+.mithril-root #vrScratch + *,.mithril-root  .vr-scratch-frame { }
+.mithril-root div:has(> #vrScratch) { border-radius: 18px; border-color: rgba(201,175,142,.7); padding: .5rem; }

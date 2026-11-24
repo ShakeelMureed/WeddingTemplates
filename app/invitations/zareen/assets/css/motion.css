@@ -1,0 +1,50 @@
+.zareen-root { background: #ede0d7; }
+.zareen-root { margin: 0; background: #ede0d7; }
+.zareen-root img,.zareen-root  video { display: block; }
+.zareen-root [data-m] {
+opacity: var(--m-o, 0);
+transform: var(--m-from);
+transition: opacity var(--m-d) var(--m-ease) var(--m-dl), transform var(--m-d) var(--m-ease) var(--m-dl);
+}
+.zareen-root [data-m].in { opacity: 1; transform: none; }
+.zareen-root .cover-eyebrow { animation: zareen-lago-eyebrow 1.6s ease-out .3s both; }
+.zareen-root .cover-names { animation: zareen-lago-rise 1.4s cubic-bezier(.22,1,.36,1) .55s both; }
+.zareen-root .cover-hint { animation: zareen-lago-fade 1.2s ease .1s both; animation-delay: 1.1s; }
+@keyframes zareen-lago-eyebrow { from { opacity: 0; letter-spacing: .12em; } to { opacity: 1; letter-spacing: .33em; } }
+@keyframes zareen-lago-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes zareen-lago-fade { from { opacity: 0; } to { opacity: 1; } }
+.zareen-root .music-chip:not([hidden]) { animation: zareen-lago-pop .6s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes zareen-lago-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+.zareen-root .music-chip .bar { height: 4px; }
+.zareen-root .music-chip.is-playing .bar { animation: zareen-lago-bar 1.1s ease-in-out infinite; }
+.zareen-root .music-chip.is-playing .bar:nth-child(2) { animation-delay: .18s; }
+.zareen-root .music-chip.is-playing .bar:nth-child(3) { animation-delay: .36s; }
+@keyframes zareen-lago-bar { 0%,100% { height: 4px; } 25% { height: 14px; } 50% { height: 6px; } 75% { height: 12px; } }
+.zareen-root .modal-back { opacity: 0; transition: opacity .25s; }
+.zareen-root .modal-back.open { opacity: 1; }
+.zareen-root .modal-card { opacity: 0; transform: translateY(24px) scale(.97); transition: opacity .35s cubic-bezier(.22,1,.36,1), transform .35s cubic-bezier(.22,1,.36,1); }
+.zareen-root .modal-back.open .modal-card { opacity: 1; transform: none; }
+.zareen-root .rsvp-done { animation: zareen-lago-done .7s cubic-bezier(.22,1,.36,1) both; }
+.zareen-root .rsvp-check { animation: zareen-lago-check .6s cubic-bezier(.34,1.56,.64,1) .1s both; }
+@keyframes zareen-lago-done { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes zareen-lago-check { from { transform: scale(.5) rotate(-10deg); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+.zareen-root [data-m] { opacity: 1; transform: none; transition: none; }
+.zareen-root .cover-eyebrow,.zareen-root  .cover-names,.zareen-root  .cover-hint,.zareen-root  .music-chip,.zareen-root  .rsvp-done,.zareen-root  .rsvp-check { animation: none; }
+}
+@media (min-width: 768px) { .zareen-root #heroVideo { object-position: 50% 92%; } }
+@media (max-width: 639px) {
+.zareen-root .venue-img { height: auto; width: min(72%, 18rem); margin: 0 auto; object-fit: contain; }
+}
+@media (max-width: 639px) {
+.zareen-root #heroPlaque { bottom: max(4svh, env(safe-area-inset-bottom)); padding: 0 10px; }
+.zareen-root #heroPlaque > div > div:first-child { display: none; }
+.zareen-root #heroPlaque > div > img { display: block; width: 100%; max-height: none; height: auto; }
+.zareen-root #heroPlaque > div > div:last-child { position: absolute; inset: 0; padding: 6% 12% 4%; }
+.zareen-root #heroPlaque h1 { font-size: clamp(1.9rem, 9vw, 2.6rem); margin-bottom: 4%; }
+}
+.zareen-root .lg-scratch { border-radius: 4px; touch-action: none; }
+.zareen-root { --wf-bg: #ede0d7; --wf-ink: #8C7343; --wf-line: rgba(169,138,82,.45); --wf-font: "cormorant", Georgia, serif; }
+.zareen-root .lg-scratch { aspect-ratio: 1.55; }
+.zareen-root .lg-scratch .font-pinyon { font-size: clamp(2.2rem, 8vw, 3.2rem); } .zareen-root .lg-scratch .italic { font-size: 1.05rem; }
+.zareen-root .lg-scratch { user-select: none; -webkit-user-select: none; }

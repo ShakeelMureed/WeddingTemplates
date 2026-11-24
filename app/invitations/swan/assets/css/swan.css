@@ -1,0 +1,34 @@
+.swan-root { scroll-behavior: auto; background: #F7FAFD; }
+.swan-root { background: #F7FAFD; margin: 0; }
+.swan-root img,.swan-root  video { display: block; }
+.swan-root .rv { opacity: 0; transform: translateY(26px); transition: opacity 1s cubic-bezier(.22, 1, .36, 1), transform 1s cubic-bezier(.22, 1, .36, 1); }
+.swan-root .rv.in { opacity: 1; transform: none; }
+.swan-root .hero-in { opacity: 0; animation-fill-mode: both; animation-timing-function: ease-in-out; }
+.swan-root .hero-names { animation: swan-hero-rise 1.3s .25s both ease-in-out; }
+.swan-root .hero-date { animation: swan-hero-fade 1.1s .6s both ease-in-out; }
+.swan-root .hero-ornament { animation: swan-hero-rise-sm 1.2s .85s both ease-out; }
+.swan-root .hero-caret { animation: swan-hero-fade 1s 1.4s both ease-in-out; }
+@keyframes swan-hero-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes swan-hero-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes swan-hero-rise-sm { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.swan-root .feather-tilt { opacity: 0; transform: translateY(-12px) rotate(39deg); transition: opacity 1.4s ease-out, transform 1.4s ease-out; }
+.swan-root .feather-tilt.in { opacity: 1; transform: translateY(0) rotate(45deg); }
+.swan-root .feather-bob { animation: swan-feather-bob 7s ease-in-out 1.4s infinite; }
+@keyframes swan-feather-bob {
+0%, 100% { transform: translateY(0) rotate(0deg); }
+25% { transform: translateY(-7px) rotate(3.5deg); }
+50% { transform: translateY(0) rotate(0deg); }
+75% { transform: translateY(5px) rotate(-3.5deg); }
+}
+.swan-root .cover-hint { animation: swan-cover-pulse 3s ease-in-out infinite; }
+@keyframes swan-cover-pulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+.swan-root .rv,.swan-root  .feather-tilt { opacity: 1; transform: none; transition: none; }
+.swan-root .feather-bob,.swan-root  .cover-hint { animation: none; }
+}
+.swan-root { --wc-bg: #F7FAFD; --wc-ink: #33517A; --wc-accent: #7A98BA; --wc-line: rgba(122,152,186,.38); --wc-font: "freeSerif", "Times New Roman", serif;
+--wf-ink: #33517A; --wf-line: rgba(122,152,186,.45); --wf-bg: #F7FAFD; --wf-font: "freeSerif", "Times New Roman", serif; }.swan-root .wf{display:flex;flex-direction:column;align-items:center;gap:9px;padding:20px 16px 28px;background:#F7FAFD;color:#33517A;text-align:center;font-family:var(--wf-font);font-size:11px;letter-spacing:.08em}
+.swan-root .wf-logo{display:block;width:82px;height:32px;background:center/contain no-repeat url('../images/wedpk-logo.png')}
+.swan-root .wf-tag,.swan-root .wf-copy{margin:0;opacity:.68}
+.swan-root .wf-social{display:flex;gap:18px;margin:4px 0}
+.swan-root .wf-social a{color:#33517A;font-size:17px;text-decoration:none}

@@ -1,0 +1,140 @@
+#invitation.black-velvet { --wp-bg: transparent; --wp-ink: #3a2a20; --wp-gold: #c9a35a; --wp-soft: rgba(58, 42, 32, .62); --wp-accent: #b3202f;
+--wp-script: "Pinyon Script", cursive; --wp-body: Georgia, serif; --wp-caps: Georgia, serif; }
+#invitation.black-velvet .wp-sec { position: relative; box-sizing: border-box; width: 100%; padding: 3.2rem 1.25rem 3.4rem; text-align: center; background: var(--wp-bg);
+color: var(--wp-ink); overflow: hidden; opacity: 0; transform: translateY(26px); transition: opacity 1s ease, transform 1s cubic-bezier(.2,.8,.2,1); }
+#invitation.black-velvet .wp-sec.is-in { opacity: 1; transform: none; }
+#invitation.black-velvet .wp-sec * { box-sizing: border-box; }
+#invitation.black-velvet .wp-eyebrow { margin: 0 0 .5rem; font-family: var(--wp-caps); font-size: .68rem; letter-spacing: .32em; text-transform: uppercase; color: var(--wp-gold); }
+#invitation.black-velvet .wp-title { margin: 0 auto .6rem; max-width: 22rem; font-family: var(--wp-script); font-weight: 400; font-size: clamp(2rem, 9.5vw, 2.7rem); line-height: 1.15; color: var(--wp-ink); }
+#invitation.black-velvet .wp-text { margin: 0 auto 1.4rem; max-width: 20rem; font-family: var(--wp-body); font-size: 1rem; line-height: 1.55; color: var(--wp-soft); }
+#invitation.black-velvet .wp-hint { margin: 1rem 0 0; min-height: 1.2em; font-family: var(--wp-caps); font-size: .62rem; letter-spacing: .26em; text-transform: uppercase; color: var(--wp-soft); }
+#invitation.black-velvet .wp-btn { margin-top: 1.4rem; padding: .85rem 1.6rem; border: 1px solid var(--wp-gold); border-radius: 999px; background: transparent; color: var(--wp-ink);
+font-family: var(--wp-caps); font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; cursor: pointer; transition: background .3s, color .3s, transform .2s; }
+#invitation.black-velvet .wp-btn:active { transform: scale(.96); background: var(--wp-gold); color: #fff; }
+#invitation.black-velvet button.wp-lamp, #invitation.black-velvet button.wp-chime, #invitation.black-velvet button.wp-hit, #invitation.black-velvet button.wp-heart-btn { -webkit-tap-highlight-color: transparent; font: inherit; }
+#invitation.black-velvet .wp-p { position: fixed; z-index: 9999; pointer-events: none; margin: -7px 0 0 -7px; animation: blackvelvet-wp-wpFly 1.6s cubic-bezier(.15,.7,.4,1) forwards; }
+#invitation.black-velvet .wp-p svg { display: block; width: 100%; height: 100%; }
+@keyframes blackvelvet-wp-wpFly { 0% { opacity: 0; transform: translate(0,0) rotate(0) scale(.4); } 12% { opacity: 1; transform: translate(calc(var(--dx)*.25), calc(var(--dy)*.1)) rotate(calc(var(--r)*.2)) scale(1); }
+100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--r)) scale(.8); } }
+#invitation.black-velvet .wp-word { position: fixed; z-index: 9999; pointer-events: none; transform: translate(-50%, 0); font-family: var(--wp-script); font-size: 2rem; white-space: nowrap;
+text-shadow: 0 2px 10px rgba(255,255,255,.7); animation: blackvelvet-wp-wpWord 1.8s ease-out forwards; }
+@keyframes blackvelvet-wp-wpWord { 0% { opacity: 0; transform: translate(-50%, 10px) scale(.7); } 20% { opacity: 1; transform: translate(-50%, -20px) scale(1); }
+100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), -130px) scale(1.1); } }
+#invitation.black-velvet .wp-lamp-row { display: flex; justify-content: center; align-items: flex-end; gap: clamp(.2rem, 2vw, .8rem); margin: 1.6rem auto 0; max-width: 24rem; }
+#invitation.black-velvet .wp-lamp { position: relative; flex: 1 1 0; max-width: 4.6rem; padding: 0; border: 0; background: none; cursor: pointer; }
+#invitation.black-velvet .wp-lamp svg { position: relative; z-index: 1; display: block; width: 100%; height: auto; transition: transform .3s; }
+#invitation.black-velvet .wp-lamp:active svg { transform: scale(.94); }
+#invitation.black-velvet .wp-flame { position: absolute; z-index: 2; left: 82%; top: 8%; width: 22%; aspect-ratio: 1 / 1.9; transform: translate(-50%, -50%) scale(0); transform-origin: 50% 90%;
+transition: transform .45s cubic-bezier(.3,1.6,.5,1); }
+#invitation.black-velvet .wp-flame i { position: absolute; inset: 0; border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%;
+background: radial-gradient(ellipse at 50% 75%, #fff 0 18%, #ffe08a 30%, #ffa632 60%, rgba(255,90,0,0) 75%); animation: blackvelvet-wp-wpFlicker 1.4s ease-in-out infinite alternate; }
+@keyframes blackvelvet-wp-wpFlicker { 0% { transform: scale(1, 1) rotate(-2deg); } 35% { transform: scale(.92, 1.08) rotate(2deg); } 70% { transform: scale(1.05, .95) rotate(-1deg); } 100% { transform: scale(.96, 1.04) rotate(1.5deg); } }
+#invitation.black-velvet .wp-glow { position: absolute; z-index: 0; left: 82%; top: 8%; width: 230%; aspect-ratio: 1; transform: translate(-50%, -50%) scale(.3); border-radius: 50%; opacity: 0;
+background: radial-gradient(circle, rgba(255,196,90,.55), rgba(255,160,50,.18) 40%, rgba(255,140,0,0) 70%); transition: opacity .8s, transform .8s; pointer-events: none; }
+#invitation.black-velvet .wp-lamp.is-lit .wp-flame { transform: translate(-50%, -78%) scale(1); }
+#invitation.black-velvet .wp-lamp.is-lit .wp-glow { opacity: 1; transform: translate(-50%, -50%) scale(1); animation: blackvelvet-wp-wpPulse 2.6s ease-in-out infinite; }
+@keyframes blackvelvet-wp-wpPulse { 50% { opacity: .75; transform: translate(-50%, -50%) scale(.92); } }
+#invitation.black-velvet .wp-lanterns .wp-lamp { max-width: 3.9rem; animation: blackvelvet-wp-wpSway 4s ease-in-out infinite alternate; transform-origin: 50% 0; }
+#invitation.black-velvet .wp-lanterns .wp-lamp:nth-child(2n) { animation-delay: -2s; }
+#invitation.black-velvet .wp-lanterns .wp-lamp:nth-child(odd) { margin-bottom: 1.4rem; }
+#invitation.black-velvet .wp-lanterns .wp-flame { left: 50%; top: 58%; width: 26%; }
+#invitation.black-velvet .wp-lanterns .wp-lamp.is-lit .wp-flame { transform: translate(-50%, -50%) scale(1); }
+#invitation.black-velvet .wp-lanterns .wp-glow { left: 50%; top: 55%; width: 260%; }
+@keyframes blackvelvet-wp-wpSway { from { transform: rotate(-2.5deg); } to { transform: rotate(2.5deg); } }
+#invitation.black-velvet .wp-done { margin: 1.1rem auto 0; max-width: 20rem; min-height: 0; font-family: var(--wp-script); font-size: clamp(1.6rem, 7vw, 2rem); line-height: 1.25; color: var(--wp-ink);
+opacity: 0; transform: translateY(8px); transition: opacity 1s .3s, transform 1s .3s; }
+#invitation.black-velvet .wp-lamps.is-all .wp-done { opacity: 1; transform: none; }
+#invitation.black-velvet .wp-drum { position: relative; width: min(18rem, 84vw); margin: 1.4rem auto 0; }
+#invitation.black-velvet .wp-drum svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 12px 18px rgba(60,20,5,.28)); }
+#invitation.black-velvet .wp-hit { position: absolute; top: 0; bottom: 0; width: 50%; padding: 0; border: 0; background: none; cursor: pointer; }
+#invitation.black-velvet .wp-hit-l { left: 0; } #invitation.black-velvet .wp-hit-r { right: 0; }
+#invitation.black-velvet .wp-hit span { position: absolute; bottom: -1.6rem; left: 50%; transform: translateX(-50%); font-family: var(--wp-caps); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--wp-soft); }
+#invitation.black-velvet .wp-drum.hit-l svg { animation: blackvelvet-wp-wpThumpL .28s ease-out; } #invitation.black-velvet .wp-drum.hit-r svg { animation: blackvelvet-wp-wpThumpR .2s ease-out; }
+@keyframes blackvelvet-wp-wpThumpL { 30% { transform: scale(1.04) rotate(-1.5deg); } }
+@keyframes blackvelvet-wp-wpThumpR { 30% { transform: scale(1.02) rotate(1deg); } }
+#invitation.black-velvet .wp-dhol .wp-btn { margin-top: 2.6rem; }
+#invitation.black-velvet .wp-chime-bar { width: min(19rem, 86vw); height: 3px; margin: 1.6rem auto 0; border-radius: 3px; background: linear-gradient(90deg, transparent, var(--wp-gold) 12%, var(--wp-gold) 88%, transparent); }
+#invitation.black-velvet .wp-chime-row { display: flex; justify-content: space-between; width: min(17rem, 78vw); margin: 0 auto; touch-action: pan-y; }
+#invitation.black-velvet .wp-chime { position: relative; display: flex; flex-direction: column; align-items: center; width: 2.2rem; padding: 0 0 .4rem; border: 0; background: none; cursor: pointer; transform-origin: 50% 0; }
+#invitation.black-velvet .wp-string { display: block; width: 1px; height: var(--len); background: linear-gradient(var(--wp-gold), rgba(201,175,142,.4)); }
+#invitation.black-velvet .wp-chime svg { width: 1.15rem; height: auto; filter: drop-shadow(0 4px 6px rgba(120,140,128,.35)); }
+#invitation.black-velvet .wp-chime.is-ring { animation: blackvelvet-wp-wpSwing 1.6s cubic-bezier(.3,.6,.3,1); }
+#invitation.black-velvet .wp-chime.is-ring svg { animation: blackvelvet-wp-wpGlint 1.6s ease-out; }
+@keyframes blackvelvet-wp-wpSwing { 10% { transform: rotate(9deg); } 30% { transform: rotate(-6deg); } 50% { transform: rotate(3.5deg); } 70% { transform: rotate(-1.5deg); } 100% { transform: rotate(0); } }
+@keyframes blackvelvet-wp-wpGlint { 0%, 100% { filter: drop-shadow(0 4px 6px rgba(120,140,128,.35)); } 15% { filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 16px rgba(201,175,142,.9)) brightness(1.15); } }
+#invitation.black-velvet .wp-heart-btn { position: relative; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; width: 8.2rem; height: 8.2rem;
+margin-top: 1rem; border: 1px solid var(--wp-gold); border-radius: 50%; background: radial-gradient(circle at 50% 35%, rgba(255,255,255,.6), rgba(255,255,255,0) 70%); color: var(--wp-accent);
+cursor: pointer; box-shadow: 0 0 0 .5rem rgba(201,163,90,.08), 0 14px 30px -18px rgba(0,0,0,.45); animation: blackvelvet-wp-wpBeat 2.4s ease-in-out infinite; }
+#invitation.black-velvet .wp-heart-btn svg { width: 2.4rem; height: 2.2rem; }
+#invitation.black-velvet .wp-heart-btn span { font-family: var(--wp-caps); font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--wp-ink); }
+#invitation.black-velvet .wp-heart-btn.is-pop { animation: blackvelvet-wp-wpPop .45s cubic-bezier(.3,1.8,.5,1); }
+@keyframes blackvelvet-wp-wpBeat { 0%, 60%, 100% { transform: scale(1); } 70% { transform: scale(1.05); } 80% { transform: scale(.99); } 90% { transform: scale(1.03); } }
+@keyframes blackvelvet-wp-wpPop { 0% { transform: scale(.9); } 60% { transform: scale(1.1); } 100% { transform: scale(1); } }
+#invitation.black-velvet .wp-count { margin: 1rem 0 0; min-height: 1.4em; font-family: var(--wp-body); font-style: italic; font-size: .95rem; color: var(--wp-soft); }
+#invitation.black-velvet .wp-contacts { padding-top: 1.6rem; }
+#invitation.black-velvet .wp-contacts .wp-title { font-size: clamp(1.8rem, 8vw, 2.3rem); }
+#invitation.black-velvet .wp-person { margin: 1.3rem auto 0; max-width: 21rem; }
+#invitation.black-velvet .wp-name { margin: 0 0 .5rem; font-family: var(--wp-body); font-size: 1.15rem; font-weight: 600; color: var(--wp-ink); }
+#invitation.black-velvet .wp-phone { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .45rem .5rem; margin: .45rem 0; }
+#invitation.black-velvet .wp-phone span { flex: 0 0 100%; font-family: var(--wp-body); font-size: 1rem; letter-spacing: .08em; color: var(--wp-soft); }
+#invitation.black-velvet .wp-pill { display: inline-block; min-width: 6.4rem; padding: .62rem 1rem; border: 1px solid var(--wp-gold); border-radius: 999px; color: var(--wp-ink); text-decoration: none;
+font-family: var(--wp-caps); font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; transition: background .3s, color .3s; }
+#invitation.black-velvet .wp-pill:active { background: var(--wp-gold); color: #fff; }
+#invitation.black-velvet .wp-tilt { transition: transform .45s cubic-bezier(.2,.8,.2,1) !important; will-change: transform; }
+#invitation.black-velvet .wp-sheen { position: relative; }
+#invitation.black-velvet .wp-sheen::before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; border-radius: inherit;
+background: linear-gradient(105deg, transparent 35%, rgba(255,240,200,.45) 50%, transparent 65%); background-size: 250% 100%; animation: blackvelvet-wp-wpSheen .9s ease-out forwards; }
+@keyframes blackvelvet-wp-wpSheen { from { background-position: 120% 0; } to { background-position: -40% 0; } }
+@media (prefers-reduced-motion: reduce) {
+#invitation.black-velvet .wp-sec { transition: none; opacity: 1; transform: none; }
+#invitation.black-velvet .wp-heart-btn, #invitation.black-velvet .wp-lanterns .wp-lamp, #invitation.black-velvet .wp-flame i { animation: none; }
+}
+#invitation.black-velvet .wp-sec.wp-dark { --wp-ink: #f6ecdd; --wp-soft: rgba(246,236,221,.72); background: radial-gradient(ellipse at 50% 35%, #5c1019 0%, #3a070c 55%, #26040a 100%); }
+#invitation.black-velvet .wp-dark .wp-title { text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+#invitation.black-velvet .wp-dark .wp-heart-btn { background: radial-gradient(circle at 50% 35%, rgba(255,240,220,.16), rgba(255,255,255,0) 70%); color: #f2b8c0; }
+#invitation.black-velvet .wp-dark .wp-btn:active { color: #3a070c; }
+#invitation.black-velvet .wp-tabla-set { position: relative; width: min(20rem, 88vw); margin: 1.4rem auto .4rem; touch-action: none; user-select: none; -webkit-user-select: none; cursor: pointer; }
+#invitation.black-velvet .wp-tabla-set svg { display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 22px rgba(0,0,0,.55)); }
+#invitation.black-velvet .wp-tabla-set g { transform-box: fill-box; transform-origin: center; }
+#invitation.black-velvet .wp-tabla-set g.hit { animation: blackvelvet-wp-wpTabla .22s ease-out; }
+@keyframes blackvelvet-wp-wpTabla { 35% { transform: scale(.965); } }
+#invitation.black-velvet .wp-tl { position: absolute; bottom: -1.5rem; font-family: var(--wp-caps); font-size: .58rem; letter-spacing: .26em; text-transform: uppercase; color: var(--wp-soft); }
+#invitation.black-velvet .wp-tl-b { left: 22%; transform: translateX(-50%); } #invitation.black-velvet .wp-tl-d { left: 74%; transform: translateX(-50%); white-space: nowrap; }
+#invitation.black-velvet .wp-strike { position: absolute; width: 10px; height: 10px; margin: -5px; border-radius: 50%; border: 2px solid rgba(255,236,190,.9); pointer-events: none; animation: blackvelvet-wp-wpStrike .7s ease-out forwards; }
+@keyframes blackvelvet-wp-wpStrike { to { transform: scale(7); opacity: 0; } }
+#invitation.black-velvet .wp-tabla .wp-btn { margin-top: 2.4rem; }
+#invitation.black-velvet .wp-harm-box { position: relative; width: min(21rem, 92vw); margin: 1.4rem auto 0; padding: 1.1rem .7rem .8rem; border-radius: 12px;
+background: linear-gradient(#5a2e14, #3b1f0d); box-shadow: inset 0 0 0 2px #c9a35f, 0 18px 30px -16px rgba(0,0,0,.7); }
+#invitation.black-velvet .wp-bellows { height: 1.4rem; margin: -1.1rem -.7rem .7rem; border-radius: 12px 12px 0 0;
+background: repeating-linear-gradient(90deg, #2a0d10 0 9px, #6e1a24 9px 12px); transform-origin: top; transition: transform .3s; }
+#invitation.black-velvet .wp-harm-box.is-playing .wp-bellows { animation: blackvelvet-wp-wpPump 1.2s ease-in-out infinite; }
+@keyframes blackvelvet-wp-wpPump { 50% { transform: scaleY(1.35); } }
+#invitation.black-velvet .wp-keys { position: relative; display: flex; height: 8.2rem; touch-action: none; user-select: none; -webkit-user-select: none; }
+#invitation.black-velvet .wp-key { padding: 0; border: 0; cursor: pointer; font: inherit; }
+#invitation.black-velvet .wp-key.w { position: relative; flex: 1 1 0; margin: 0 1px; border-radius: 0 0 6px 6px; background: linear-gradient(#fffaf0, #eadcc2); box-shadow: inset 0 -5px 0 #cbb48d; }
+#invitation.black-velvet .wp-key.w span { position: absolute; left: 0; right: 0; bottom: .6rem; font-family: var(--wp-caps); font-size: .58rem; letter-spacing: .06em; color: #5a2e14; }
+#invitation.black-velvet .wp-key.b { position: absolute; z-index: 2; top: 0; left: calc(var(--i) / var(--w) * 100% - 4.2%); width: 8.4%; height: 58%; border-radius: 0 0 4px 4px; background: linear-gradient(#2b2020, #0d0909); box-shadow: inset 0 -4px 0 #000; }
+#invitation.black-velvet .wp-key.on.w { background: linear-gradient(#f3d7a0, #d9b06a); box-shadow: inset 0 -2px 0 #b98e47, 0 0 14px rgba(255,214,140,.7); }
+#invitation.black-velvet .wp-key.on.b { background: linear-gradient(#5c0f16, #2a0508); box-shadow: 0 0 12px rgba(201,65,79,.8); }
+#invitation.black-velvet .wp-palm { position: relative; width: min(16rem, 74vw); aspect-ratio: 1; margin: 1.4rem auto 0; border-radius: 22px; overflow: hidden; touch-action: none;
+background: radial-gradient(circle at 50% 40%, #f6e4c8, #e9cfa6); box-shadow: 0 0 0 1px rgba(201,163,95,.6), 0 20px 40px -20px rgba(0,0,0,.8); }
+#invitation.black-velvet .wp-palm .wp-henna { position: absolute; inset: 4%; width: 92%; height: 92%; object-fit: contain; filter: sepia(.6) hue-rotate(40deg) saturate(.7) brightness(1.25);
+transition: filter 3.5s ease; }
+#invitation.black-velvet .wp-palm.is-done .wp-henna { filter: sepia(.2) saturate(1.5) hue-rotate(-12deg) brightness(.8); }
+#invitation.black-velvet .wp-initial { position: absolute; left: 0; right: 0; top: 47%; text-align: center; font-family: var(--wp-script); font-size: 2.4rem; color: #6b1a12; opacity: 0;
+text-shadow: 0 0 1px #fff7e6; transition: opacity 2s 2.4s ease; pointer-events: none; }
+#invitation.black-velvet .wp-palm.is-done .wp-initial { opacity: .85; }
+#invitation.black-velvet .wp-palm canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; transition: opacity 1.2s; }
+#invitation.black-velvet .wp-palm.is-done canvas { opacity: 0; pointer-events: none; }
+#invitation.black-velvet .wp-mehndi .wp-done { opacity: 0; transform: translateY(8px); transition: opacity 1s 1s, transform 1s 1s; }
+#invitation.black-velvet .wp-mehndi .wp-palm.is-done ~ .wp-done { opacity: 1; transform: none; }
+#invitation.black-velvet .wp-cord { display: flex; justify-content: center; gap: 2px; width: min(20rem, 88vw); margin: 1.6rem auto 0; padding-top: .6rem; border-top: 3px solid #8c1620; border-radius: 50% 50% 0 0 / 14px 14px 0 0; touch-action: pan-y; }
+#invitation.black-velvet .wp-bell { position: relative; width: 1.55rem; height: 2.2rem; padding: 0; border: 0; background: none; cursor: pointer; transform-origin: 50% 0; }
+#invitation.black-velvet .wp-bell::before { content: ""; position: absolute; left: 50%; top: -.6rem; width: 1px; height: .7rem; background: #c9a35f; }
+#invitation.black-velvet .wp-bell i { position: absolute; left: 50%; top: .1rem; width: 1.3rem; height: 1.3rem; margin-left: -.65rem; border-radius: 50%;
+background: radial-gradient(circle at 35% 30%, #fff3c9, #e3c08a 30%, #b9853f 65%, #6b4a1c); box-shadow: 0 3px 6px rgba(0,0,0,.5); }
+#invitation.black-velvet .wp-bell i::after { content: ""; position: absolute; left: 30%; right: 30%; bottom: 22%; height: 2px; border-radius: 2px; background: #3b240b; }
+#invitation.black-velvet .wp-bell.ring { animation: blackvelvet-wp-wpJingle .5s ease-out; }
+@keyframes blackvelvet-wp-wpJingle { 20% { transform: rotate(14deg); } 45% { transform: rotate(-10deg); } 70% { transform: rotate(5deg); } }
+#invitation.black-velvet .wp-tabla-set, #invitation.black-velvet .wp-tabla-set *, #invitation.black-velvet .wp-keys, #invitation.black-velvet .wp-key, #invitation.black-velvet .wp-cord, #invitation.black-velvet .wp-bell, #invitation.black-velvet .wp-palm, #invitation.black-velvet .wp-palm *, #invitation.black-velvet .wp-lamp, #invitation.black-velvet .wp-heart-btn, #invitation.black-velvet .wp-chime {
+-webkit-tap-highlight-color: transparent; outline: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }

@@ -284,7 +284,6 @@ export default function BloomInvitation() {
           <p className="body">daughter of<br />Mr. &amp; Mrs. Ahmed Khan</p><p className="body">Your presence and prayers would make<br />our celebration complete.</p>
         </Reveal>
         <Reveal className="swag"><img src={asset('images/garland-band.webp')} alt="" /></Reveal>
-        {/*<Ornament className="corner tl" src="flower.webp" /><Ornament className="corner br" src="flower.webp" />*/}
       </section>
 
       <section className="sec family-sec" id="families" aria-labelledby="families-title">
@@ -336,7 +335,6 @@ export default function BloomInvitation() {
       <section className="sec closing">
         <Reveal className="swag2"><img src={asset('images/garland-band.webp')} alt="" /></Reveal>
         <Reveal><p className="dua">بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p><p className="line">We look forward to celebrating with you</p><p className="cn">Ali &amp; Fatima</p></Reveal>
-        {/*<Reveal className="mini"><img src={asset('images/divider.webp')} alt="" /></Reveal>*/}
       </section>
     </main>
 

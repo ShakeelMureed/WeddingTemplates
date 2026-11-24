@@ -1,0 +1,63 @@
+.sehar, .sehar { margin: 0; background: #FBFAF7; }
+.sehar img { display: block; }
+.sehar .rv-arabic { font-family: var(--ff-amiri), serif; }
+.sehar .font-imperial { font-family: var(--ff-imperial), cursive; }
+.sehar figure.m-0, .sehar blockquote.m-0 { margin: 0; }
+.sehar [data-m] { opacity: var(--m-o0); transform: var(--m-from);
+transition: opacity var(--m-d) var(--m-ease) var(--m-dl), transform var(--m-d) var(--m-ease) var(--m-dl); }
+.sehar [data-m].in { opacity: 1; transform: var(--m-to); }
+.sehar .rv-door-name { opacity: 0; animation: rv-up 1.2s cubic-bezier(.22,1,.36,1) both; }
+@keyframes rv-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.sehar .rv-gate-eyebrow { animation: rv-eyebrow 1.6s ease-out .25s both; }
+@keyframes rv-eyebrow { from { opacity: 0; letter-spacing: .2em; } to { opacity: 1; letter-spacing: .4em; } }
+.sehar .rv-seal-in { animation: rv-seal 1s cubic-bezier(.34,1.56,.64,1) .9s both; transition: transform .25s; }
+.sehar .rv-seal-in:hover { transform: scale(1.05); } .sehar .rv-seal-in:active { transform: scale(.93); }
+@keyframes rv-seal { from { opacity: 0; transform: scale(.5) rotate(-14deg); } to { opacity: 1; transform: none; } }
+.sehar .rv-pulse { opacity: 0; animation: rv-pulse 2.4s ease-in-out 1.8s infinite; }
+@keyframes rv-pulse { 0%, 100% { transform: scale(1); opacity: .55; } 50% { transform: scale(1.14); opacity: 0; } }
+.sehar .rv-gate-date { animation: rv-up12 1s ease 1.3s both; }
+@keyframes rv-up12 { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.sehar .rv-gate-hint { opacity: 0; animation: rv-hint 3s ease-in-out 1.7s infinite; }
+@keyframes rv-hint { 0% { opacity: 0; } 33% { opacity: .9; } 66% { opacity: .55; } 100% { opacity: .9; } }
+.sehar .rv-door { transition: transform 1.5s cubic-bezier(.72,0,.22,1) .15s; }
+.sehar .rv-door-shade { opacity: 0; transition: opacity 1.2s .2s; }
+.sehar .rv-open { pointer-events: none; }
+.sehar .rv-open .t050-door-left { transform: rotateY(-110deg); }
+.sehar .rv-open .t050-door-right { transform: rotateY(110deg); }
+.sehar .rv-open .rv-door-shade { opacity: .14; }
+.sehar #gateInner { transition: opacity .4s ease-in, transform .4s ease-in; }
+.sehar .rv-open #gateInner { opacity: 0; transform: scale(.92); }
+.sehar .rv-rise { transform: translateY(112%); transition: transform 1.4s cubic-bezier(.22,1,.36,1) 1.75s; }
+.sehar .rv-rise.in { transform: none; }
+.sehar .rv-chapter { opacity: 0; transform: translateY(120px) rotateX(34deg) scale(.9);
+transition: opacity 1.2s cubic-bezier(.22,1,.36,1) var(--dl), transform 1.2s cubic-bezier(.22,1,.36,1) var(--dl); }
+.sehar .rv-chapter.in { opacity: 1; transform: rotateZ(var(--tilt)); }
+.sehar .rv-chapter.in:hover { transform: translateY(-12px) scale(1.03); transition-delay: 0s; transition-duration: .55s; }
+.sehar .rv-pop:not([hidden]) { animation: rv-popin .6s cubic-bezier(.34,1.56,.64,1) .6s both; }
+@keyframes rv-popin { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+.sehar .rv-pop .bar { height: 4px; }
+.sehar .rv-pop.is-playing .bar { animation: rv-bar 1.1s ease-in-out infinite; }
+.sehar .rv-pop.is-playing .bar:nth-child(2) { animation-delay: .18s; } .sehar .rv-pop.is-playing .bar:nth-child(3) { animation-delay: .36s; }
+@keyframes rv-bar { 0%,100% { height: 4px; } 25% { height: 14px; } 50% { height: 6px; } 75% { height: 12px; } }
+.sehar .rv-done { animation: rv-done .7s cubic-bezier(.22,1,.36,1) both; }
+.sehar .rv-check { animation: rv-seal .6s cubic-bezier(.34,1.56,.64,1) .1s both; }
+@keyframes rv-done { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+.sehar [data-m], .sehar .rv-chapter, .sehar .rv-rise { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+.sehar .h-\[62svh\] { height: 62svh; } .sehar .min-h-\[22rem\] { min-height: 22rem; }
+@media (min-width: 640px) { .sehar .sm\:h-\[80svh\] { height: 80svh; } .sehar .sm\:text-\[1\.08rem\] { font-size: 1.08rem; } .sehar .sm\:text-\[1\.4rem\] { font-size: 1.4rem; } }
+.sehar .object-\[30\%_50\%\] { object-position: 30% 50%; }
+.sehar .from-\[rgba\(20\,17\,12\,0\.55\)\] { --tw-gradient-from: rgba(20,17,12,.55); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); }
+.sehar .via-\[rgba\(20\,17\,12\,0\.08\)\] { --tw-gradient-via: rgba(20,17,12,.08); --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-via-stops); }
+.sehar .via-white\/70 { --tw-gradient-via: rgba(255,255,255,.7); --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-via-stops); }
+.sehar .leading-\[2\.05\] { line-height: 2.05; } .sehar .p-0 { padding: 0; } .sehar .text-\[\#a3564b\] { color: #a3564b; }
+.sehar .text-\[clamp\(2\.4rem\,9vw\,4\.2rem\)\] { font-size: clamp(2.4rem, 9vw, 4.2rem); }
+@media (min-width: 640px) { .sehar .t050-stage > .rv-chapter:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: 50%; margin-top: 4.5rem; } }
+.sehar .rv-names > * { opacity: 0; animation: rv-up12 1.1s cubic-bezier(.22,1,.36,1) both; }
+.sehar .rv-names-eyebrow { animation-delay: 1.6s !important; }
+.sehar .rv-names-title { animation-delay: 1.8s !important; font-size: clamp(2.6rem, 11vw, 4.2rem); margin: .75rem 0 0; }
+.sehar .rv-names-date { animation-delay: 2s !important; }
+.sehar .rv-amp { font-family: var(--ff-cormorant), Georgia, serif; font-style: italic; font-size: .5em; color: var(--gold-deep); vertical-align: .2em; }
+.sehar { --wc-bg: #FBFAF7; --wc-ink: #201D18; --wc-accent: #9A7B45; --wc-line: rgba(32,29,24,.14); --wc-font: "cormorant", Georgia, serif;
+--wf-bg: #FBFAF7; --wf-ink: #201D18; --wf-line: rgba(176,141,87,.45); --wf-font: "cormorant", Georgia, serif; }

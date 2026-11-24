@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import TemplateGallery from './templates/page-client';
 
 export default function Home() {
-  redirect('/invitations/bloom');
+  return <TemplateGallery />;
 }
