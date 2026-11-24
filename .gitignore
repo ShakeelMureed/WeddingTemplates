@@ -42,6 +42,11 @@ Thumbs.db
 
 # Large media files
 *.mp4
+!app/invitations/bahaar/assets/video/intro.mp4
+!app/invitations/black-velvet-mehndi/media/intro.mp4
+!app/invitations/doors-of-mehr/media/intro.mp4
+!app/invitations/mithril/assets/video/hero.mp4
+!app/invitations/mughal-mehndi-barat/media/intro.mp4
 *.tiff
 *.avi
 *.flv
